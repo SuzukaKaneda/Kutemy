@@ -5,7 +5,7 @@
 https://www.figma.com/design/r4bTmFJ6ZBe5SjhqwFJPem/PF%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=bZvPSnRhQKWsPJ7u-1
 
 ## ER図
-https://gyazo.com/f3d6a27af75f96755e4a8d2ec8e9cdcc
+https://gyazo.com/a837cada5e1bca3ad9cab38a2ad90538
 
 ## サービス概要
 ユーザーにとって苦手な食材を克服するためのアプリです。苦手な食材を選択すると、その食材を使用した食べやすいレシピを検索できます。他ユーザーとアイディアを共有することも可能です。また、苦手な食材を使用した料理を食べることでアプリ内でポイントを貯めることができ、それを元に目標やごほうびを設定することができます。
