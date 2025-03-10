@@ -1,0 +1,32 @@
+<header>
+  <nav class="bg-green-300 h-28">
+    <div class="flex justify-between">
+      <div class="text-[16px] font-normal text-left ml-10 pt-4">
+        さぁ、まずはひとくち
+      </div>
+      <dev>
+      <%= link_to 'ログイン', login_path, class: 'login-button' %>
+      </div>
+    </div>
+    <hr class="border-t-2 border-white mt-2" style="border-color: white;" /> <!-- マージンを調整 -->
+    <div class="flex justify-between">
+      <div class="text-[45px] font-bold text-left ml-10">
+        Kutemy
+      </div>
+      <div class="flex justify-end font-bold items-center space-x-8 h-[80px] mr-10"> 
+        <div class="flex flex-col items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 15l6 6m-11-4a7 7 0 1 1 0-14a7 7 0 0 1 0 14"/>
+          </svg>
+          <span class="text-[10px]">レシピを探す</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20">
+          <path d="M4 4a2 2 0 0 0-2 2v1h16V6a2 2 0 0 0-2-2z"/><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM4 13a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1m5-1a1 1 0 1 0 0 2h1a1 1 0 1 0 0-2z" clip-rule="evenodd"/></g>
+          </svg>
+          <span class="text-[10px]">克服ポイント</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

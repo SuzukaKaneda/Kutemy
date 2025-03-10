@@ -18,6 +18,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/header' %>
+    <div class="bg-amber-50 min-h-screen">
+      <%= yield %>
+    </div>
   </body>
 </html>
