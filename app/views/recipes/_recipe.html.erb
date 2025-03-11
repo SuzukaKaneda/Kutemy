@@ -1,9 +1,21 @@
 <div id="<%= dom_id recipe %>">
-  <p>
-    <strong>Title:</strong>
-    <%= recipe.title %>
-    <%= recipe.trick %>
-    <%= recipe.get_point %>
-  </p>
-
+  <div class="flex flex-wrap justify-center">
+    <div class="bg-red-50 shadow-md rounded-lg m-4 p-6 w-md">
+      <div class="text-[20px] font-bold text-center">
+        <%=  link_to "#{recipe.title}", recipe %>
+      </div>
+      <div class="flex justify-between ">
+        <div class="flex ml-1">
+          <svg class="h-8 w-8 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+          </svg>
+          <div class="mt-2">42</div>
+        </div>
+        <div class="text-[15px] mt-1">
+          <p><%= "克服ポイント：""#{recipe.get_point}" %></p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
