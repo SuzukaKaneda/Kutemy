@@ -41,6 +41,9 @@ gem "rubocop"
 gem "pry-byebug"
 # 画像アップロード用
 gem 'carrierwave', '2.2.2'
+# 画像編集用
+gem 'mini_magick'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
