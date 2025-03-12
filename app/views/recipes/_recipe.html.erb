@@ -1,6 +1,9 @@
 <div id="<%= dom_id recipe %>">
   <div class="flex flex-wrap justify-center">
     <div class="bg-red-50 shadow-md rounded-lg m-4 p-6 w-md">
+      <dev>
+      <%= image_tag recipe.image_url if recipe.image.present? %>
+      </dev>
       <div class="text-[20px] font-bold text-center">
         <%=  link_to "#{recipe.title}", recipe %>
       </div>
