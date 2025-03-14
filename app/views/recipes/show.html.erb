@@ -1,10 +1,62 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @recipe %>
+<% if @recipe.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+        <% recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<% content_for :title, "Showing recipe" %>
+
+<h1 class="ml-10">レシピ詳細</h1>
 
 <div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%= link_to "Back to recipes", recipes_path %>
+  <div class="flex justify-end mr-10 mb-4">
+    <div class="mr-10 pt-3">
+      <%= link_to "レシピ一覧へ", recipes_path %>
+    </div>
+    <%= link_to "削除", recipe_path(@recipe), data: { turbo_method: :delete }, class: "rounded-lg  bg-red-500 text-white px-4 my-2 mr-2", onclick: "confirm('本当に削除しますか？')" %>
+    <%= link_to "編集", edit_recipe_path(@recipe), class: "rounded-lg bg-green-400 text-stone-700 px-4 my-2" %> 
+  </div>
 
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+  <div class="flex">
+    <div class="ml-10 py-2 mr-50">
+      <%= cl_image_tag(@recipe.image.url(:show_size)) %>
+    </div>
+    <div class="py-2">
+      <div class="text-[50px]">
+       <%= @recipe.title %>
+      </div>
+      <div class="rounded-lg w-100 border mt-3 p-2" style="background-color: #F2EDED;"> <!-- 丸みを帯びた四角 -->
+        <h2 class="text-[15px]">苦手な食材:</h2> <!-- タイトル -->
+       </div>
+      <div class="flex mt-30">
+        <div class="flex">
+          <div>
+            <svg class="h-8 w-8 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+            <div class="pt-2">
+              42
+            </div>
+        </div>
+        <div class="text-[20px] ml-10 pt-1">
+          克服ポイント：<%=@recipe.get_point%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rounded-lg w-130 border ml-150 mt-3 p-2" style="background-color: #F2EDED;"> <!-- 丸みを帯びた四角 -->
+    <h2 class="text-[15px]">コツ・工夫点:</h2> <!-- タイトル -->
+    <div class="text-[15px] py-2">
+      <%= @recipe.trick %>
+    </div>
+  </div>
 </div>
