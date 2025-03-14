@@ -14,6 +14,10 @@ class RecipeImageUploader < CarrierWave::Uploader::Base
     process resize_and_pad: [ 250, 300, "#F2EDED", "Center" ]
   end
 
+  version :show_size do
+    process resize_and_pad: [ 450, 300, "#F2EDED", "Center" ]
+  end
+
   def default_url
     ActionController::Base.helpers.asset_path("no_image.png") # 拡張子も含めることを忘れずに
   end
