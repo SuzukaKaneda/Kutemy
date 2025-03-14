@@ -22,10 +22,11 @@ class RecipesController < ApplicationController
   # POST /recipes or /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.remote_image_url = retouch_image(params[:recipe][:image])
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to @recipe, notice: "レシピの作成に成功しました。" }
+        format.html { redirect_to @recipe, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -33,6 +34,7 @@ class RecipesController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /recipes/1 or /recipes/1.json
   def update
@@ -66,5 +68,16 @@ class RecipesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def recipe_params
       params.require(:recipe).permit(:title, :trick, :get_point, :image, :image_cache)
+    end
+
+    def retouch_image(image)
+      if image.blank?
+        uploaded_image = Cloudinary::Uploader.upload(Rails.root.join("app/assets/images/no_image.png"),
+        transformation: [ { width: 250, height: 300, crop: "fit", background: "white" } ])
+      else
+        uploaded_image = Cloudinary::Uploader.upload(image.tempfile.path,
+        transformation: [ { width: 250, height: 300, crop: "fit", background: "white" } ])
+      end
+      uploaded_image["url"]
     end
 end

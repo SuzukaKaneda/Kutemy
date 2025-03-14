@@ -2,20 +2,24 @@ class RecipeImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-
+  include Cloudinary::CarrierWave
   # Choose what kind of storage to use for this uploader:
-  storage :file
+
   # storage :fog
   def extension_allowlist
     %w[jpg jpeg gif png]
   end
 
   version :index_size do
-    process resize_and_pad: [200, 300, '#f5ebdc', 'Center']
+    process resize_and_pad: [ 250, 300, "#F2EDED", "Center" ]
+  end
+
+  def default_url
+    ActionController::Base.helpers.asset_path("no_image.png") # 拡張子も含めることを忘れずに
   end
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  
+
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
