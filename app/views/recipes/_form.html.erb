@@ -1,4 +1,4 @@
-<%= form_with(model: recipe) do |form| %>
+<%= form_with model: @recipe do |f| %>
   <% if recipe.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
@@ -12,33 +12,52 @@
   <% end %>
 
   <div class="flex justify-end mr-10 mb-4">
-  <%= form.button "削除", type: "button", class: "bg-red-500 text-white px-4 py-2 mr-2", onclick: "confirm('本当に削除しますか？') ? this.form.action='削除のURL'; this.form.submit() : null;" %>
-  <%= form.submit "投稿", class: "bg-green-400 text-stone-700 px-4 py-2" %>
-</div>
+  <%= f.button "削除", type: "button", class: "bg-red-500 text-white px-4 py-2 mr-2", onclick: "confirm('本当に削除しますか？') ? this.form.action='削除のURL'; this.form.submit() : null;" %>
+  <%= f.submit "投稿", class: "bg-green-400 text-stone-700 px-4 py-2" %>
+  </div>
 
   <div class="flex justify-between">
     <div class="ml-10 text-[20px] py-2">
-     <%= form.label :" ", style: "display: block;" %>
-     <%= form.text_field :title, style: "background-color: lightgray; font-size: 24px; width: 500px; height: 300px; text-align: center;", placeholder: "料理の写真をのせる" %>
+      <%= f.label :" ", style: "display: block;" %>
+      <%= f.file_field :image,  id: 'image_input', style: "display: none;" %>
+      <%= f.hidden_field :image_cache %>
+      <label for="image_input" style="background-color: lightgray; font-size: 14px; width: 500px; height: 25px; text-align: center; display: inline-block; cursor: pointer;">
+        料理の写真をのせる
+      </label>
+      <img id="image_preview" src="<%= @recipe.image.url %>" alt="Image Preview" style="display: block; width: 500px; height: auto" />
     </div>
     <div class="text-[20px] py-2">
-      <%= form.label :" ", style: "display: block;" %>
-      <%= form.text_field :title, style: "background-color: lightgray; font-size: 24px; width: 500px; height: 60px; text-align: center;", placeholder: "料理名を入力する", class: "mb-4" %>
-      <%= form.label :" ", style: "display: block;" %>
-      <%= form.text_field :tag_id, style: "background-color: lightgray; font-size: 24px; width: 300px; height: 60px; text-align: center;", placeholder: "苦手な食材を選択", class: "mb-8" %>
+      <%= f.label :" ", style: "display: block;" %>
+      <%= f.text_field :title, style: "background-color: lightgray; font-size: 24px; width: 500px; height: 60px; text-align: center;", placeholder: "料理名を入力する", class: "mb-4" %>
+      <%= f.label :" ", style: "display: block;" %>
+      <%= f.text_field :tag_id, style: "background-color: lightgray; font-size: 24px; width: 300px; height: 60px; text-align: center;", placeholder: "苦手な食材を選択", class: "mb-8" %>
       <div class="flex items-center text-right mr-85 text-[20px] py-2">
-        <%= form.label :"克服ポイント：", style: "margin-right: 10px;" %>
-        <%= form.number_field :get_point, in: 1..3, step: 1, value: "", required: true, style: "background-color: lightgray; width: 50px; height: 30px; text-align: center;" %>
+        <%= f.label :"克服ポイント：", style: "margin-right: 10px;" %>
+        <%= f.number_field :get_point, in: 1..3, step: 1, required: true, style: "background-color: lightgray; width: 50px; height: 30px; text-align: center;" %>
+      </div>
+      <div class="flex justify-end mr-10">
+        <%= f.label :" ", style: "display: block" %>
+        <%= f.text_field :trick, style: "background-color: lightgray; font-size: 24px; width: 500px; height: 60px; text-align: center;", placeholder: "コツ・工夫点", class: " h-48" %>
       </div>
     </div>
   </div>
-  <div class="flex justify-end mr-10">
-    <%= form.label :" ", style: "display: block" %>
-    <%= form.text_field :trick, style: "background-color: lightgray; font-size: 24px; width: 500px; height: 60px; text-align: center;", placeholder: "コツ・工夫点", class: " h-48" %>
-  </div>
-  
-
   
 <% end %>
 
 
+<script>
+    document.getElementById('image_input').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            const img = document.getElementById('image_preview');
+            img.src = e.target.result; // 選択した画像のURLを設定
+            img.style.display = 'block'; // 画像を表示
+        }
+        
+        if (file) {
+            reader.readAsDataURL(file); // 選択したファイルを読み込む
+        }
+    });
+</script>
