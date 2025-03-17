@@ -53,6 +53,14 @@
       </div>
     </div>
   </div>
+  <div class="flex ml-10">
+    <% @recipe.ingredients.each do |ingredient| %>
+      <div class="mr-4"> <!-- 各材料を横に並べるためにスタイルを追加 -->
+        <span><%= ingredient.name %></span>
+        <span><%= ingredient.quantity %></span>
+      </div>
+    <% end %>
+  </div>
   <div class="rounded-lg w-130 border ml-150 mt-3 p-2" style="background-color: #F2EDED;"> <!-- 丸みを帯びた四角 -->
     <h2 class="text-[15px]">コツ・工夫点:</h2> <!-- タイトル -->
     <div class="text-[15px] py-2">
