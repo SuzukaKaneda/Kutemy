@@ -40,7 +40,7 @@ gem "bootsnap", require: false
 gem "rubocop"
 gem "pry-byebug"
 # 画像アップロード用
-gem "carrierwave", "2.2.6"
+gem "carrierwave", "3.1.1"
 # 画像編集用
 gem "mini_magick"
 gem "cloudinary"
