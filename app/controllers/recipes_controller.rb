@@ -68,7 +68,7 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title, :trick, :get_point, :image, :image_cache, ingredients_attributes: [:name, :quantity])
+      params.require(:recipe).permit(:title, :trick, :get_point, :image, :image_cache, ingredients_attributes: [:id, :name, :quantity, :_destroy])
     end
 
     def retouch_image(image)

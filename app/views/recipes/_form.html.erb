@@ -40,19 +40,24 @@
       </div>
     </div>
   </div>
-  <div class="mt-5 ml-10">
-  <div id="ingredients">
-    <%= f.fields_for :ingredients do |ingredient_fields| %>
-      <div class="ingredient">
-        <%= ingredient_fields.text_field :name, placeholder: " 例）にんじん", class: "bg-gray-300 mb-3 w-60" %>
-        <%= ingredient_fields.text_field :quantity, placeholder: "例）1本", class: "bg-gray-300 mb-3 ml-4 w-18" %>
-        <input type="button" value="削除" onclick="deleteRow(this)">
-      </div>
-    <% end %>
+  <div class="text-[20px] ml-15 mb-5">
+    【材料】
   </div>
-  <button id="addButton" type="button">＋材料を追加</button>
+  <div class="mt-5 ml-10">
+    <div id="ingredients">
+      <%= f.fields_for :ingredients do |ingredient_fields| %>
+        <div class="ingredient">
+          <%= ingredient_fields.hidden_field :_destroy %>
+          <%= ingredient_fields.text_field :name, placeholder: " 例）にんじん", class: "bg-gray-300 mb-3 w-60" %>
+          <%= ingredient_fields.text_field :quantity, placeholder: "例）1本", class: "bg-gray-300 mb-3 ml-4 w-18" %>
+          <input type="button" value="削除" onclick="deleteRow(this)">
+        </div>
+      <% end %>
+    </div>
+    <button id="addButton" type="button">＋材料を追加</button>
+  </div>
   <div class="ml-170">
-  <p>コツ・工夫点</p>
+    <p>【コツ・工夫点】</p>
     <%= f.label :" ", style: "display: block" %>
     <%= f.text_area :trick, style: "font-size: 14px; width: 500px; height: 60px; text-align: start; word-wrap: break-word;", placeholder: " 例）野菜がしんなりするまでよく炒める。歯応えが少なくなり食べやすくなります。", class: "h-48 bg-gray-300" %>
   </div>
@@ -82,15 +87,18 @@
     newIngredientDiv.className = 'ingredient';
   
     newIngredientDiv.innerHTML = `
-     <input type="text" name="recipe[ingredients_attributes][${newIndex}][name]" placeholder=" 例）にんじん" class="bg-gray-300 mb-3 w-60">
+      <input type="hidden" name="ingredient[_destroy]" value="0"> 
+      <input type="text" name="recipe[ingredients_attributes][${newIndex}][name]" placeholder=" 例）にんじん" class="bg-gray-300 mb-3 w-60">
       <input type="text" name="recipe[ingredients_attributes][${newIndex}][quantity]" placeholder="例）1本" class="bg-gray-300 mb-3 ml-4 w-18">
       <input type="button" value="削除" onclick="deleteRow(this)">
     `;
 
     ingredientsDiv.appendChild(newIngredientDiv);
 });
-  function deleteRow(button) {
-  const ingredientRow = button.parentNode; // ボタンの親要素を取得
-  ingredientRow.remove(); // 行を削除
+function deleteRow(button) {
+  const ingredientDiv = button.parentElement;
+  const hiddenField = ingredientDiv.querySelector('input[type="hidden"]');
+  hiddenField.value = '1'; // _destroyを1に設定
+  ingredientDiv.style.display = 'none'; // フォームを非表示にする
 }
 </script>
