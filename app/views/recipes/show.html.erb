@@ -53,9 +53,12 @@
       </div>
     </div>
   </div>
-  <div class="flex ml-10">
+  <div class="text-[20px] ml-20 mb-5">
+      材料
+  </div>
+  <div class="ml-20">
     <% @recipe.ingredients.each do |ingredient| %>
-      <div class="mr-4"> <!-- 各材料を横に並べるためにスタイルを追加 -->
+      <div class="flex justify-between w-[350px] border-b border-gray-400 mb-2">
         <span><%= ingredient.name %></span>
         <span><%= ingredient.quantity %></span>
       </div>
