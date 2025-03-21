@@ -40,23 +40,44 @@
       </div>
     </div>
   </div>
-  <div class="text-[20px] ml-15 mb-5">
-    【材料】
-  </div>
-  <div class="mt-5 ml-10">
-    <div id="ingredients">
-      <%= f.fields_for :ingredients do |ingredient_fields| %>
-        <div class="ingredient">
-          <%= ingredient_fields.hidden_field :_destroy %>
-          <%= ingredient_fields.text_field :name, placeholder: " 例）にんじん", class: "bg-gray-300 mb-3 w-60" %>
-          <%= ingredient_fields.text_field :quantity, placeholder: "例）1本", class: "bg-gray-300 mb-3 ml-4 w-18" %>
-          <input type="button" value="削除" onclick="deleteRow(this)">
+  <div class="flex">
+    <div class="mt-5 ml-10">
+      <div id="ingredients">
+        <div class="text-[20px] mb-5">
+         【材料】
         </div>
-      <% end %>
+        <%= f.fields_for :ingredients do |ingredient_fields| %>
+          <div class="ingredient">
+            <%= ingredient_fields.hidden_field :_destroy %>
+            <%= ingredient_fields.text_field :name, placeholder: " 例）にんじん", class: "bg-gray-300 mb-3 w-60" %>
+            <%= ingredient_fields.text_field :quantity, placeholder: "例）1本", class: "bg-gray-300 mb-3 ml-4 w-18" %>
+            <input type="button" value="削除" onclick="deleteRow(this)">
+          </div>
+        <% end %>
+      </div>
+      <button id="add-ingredient" type="button">＋材料を追加</button>
     </div>
-    <button id="addButton" type="button">＋材料を追加</button>
+    <div class="mt-5 ml-50">
+      <div class="text-[20px] mb-5">
+      【手順】
+      </div>
+      <div id="instructions" class="flex grid grid-cols-3">
+        <%= f.fields_for :instructions do |instruction_fields| %>
+          <div class="instructions mr-10">
+            <%= instruction_fields.hidden_field :_destroy %>
+            <%= instruction_fields.text_field :step, placeholder: "例)1", class: "bg-gray-300 mb-1 w-10 block" %>
+            <%= instruction_fields.text_area :content, placeholder: "例）野菜を切り、飴色になるまでよく炒める。焦がさないように注意。", 
+                class: "bg-gray-300 mb-2 w-40 h-45 block" %>
+            <input type="button" value="削除" onclick="deleteRow(this)" class="underline mb-10">
+          </div>
+        <% end %>
+      </div>
+      <div class="ml-65">
+        <button id="add-instruction" type="button">＋手順を追加</button>
+      </div>
+    </div>
   </div>
-  <div class="ml-170">
+  <div class="ml-170 mt-10">
     <p>【コツ・工夫点】</p>
     <%= f.label :" ", style: "display: block" %>
     <%= f.text_area :trick, style: "font-size: 14px; width: 500px; height: 60px; text-align: start; word-wrap: break-word;", placeholder: " 例）野菜がしんなりするまでよく炒める。歯応えが少なくなり食べやすくなります。", class: "h-48 bg-gray-300" %>
@@ -65,7 +86,7 @@
 
 
 <script>
-    document.getElementById('image_input').addEventListener('change', function(event) {
+  document.getElementById('image_input').addEventListener('change', function(event) {
         const file = event.target.files[0];
         const reader = new FileReader();
         
@@ -79,7 +100,7 @@
             reader.readAsDataURL(file); // 選択したファイルを読み込む
         }
     });
-    document.getElementById('addButton').addEventListener('click', function() {
+  document.getElementById('add-ingredient').addEventListener('click', function() {
     const ingredientsDiv = document.getElementById('ingredients');
     const newIndex = ingredientsDiv.children.length; // 現在の行数を取得
 
@@ -94,11 +115,33 @@
     `;
 
     ingredientsDiv.appendChild(newIngredientDiv);
-});
-function deleteRow(button) {
-  const ingredientDiv = button.parentElement;
-  const hiddenField = ingredientDiv.querySelector('input[type="hidden"]');
-  hiddenField.value = '1'; // _destroyを1に設定
-  ingredientDiv.style.display = 'none'; // フォームを非表示にする
-}
+  });
+  function deleteRow(button) {
+    const ingredientDiv = button.parentElement;
+    const hiddenField = ingredientDiv.querySelector('input[type="hidden"]');
+    hiddenField.value = '1'; // _destroyを1に設定
+    ingredientDiv.style.display = 'none'; // フォームを非表示にする
+  }
+  document.getElementById('add-instruction').addEventListener('click', function() {
+    const instructionsDiv = document.getElementById('instructions');
+    const newIndex = instructionsDiv.children.length; // 現在の行数を取得
+
+    const newInstructionDiv = document.createElement('div');
+    newInstructionDiv.className = 'instruction';
+  
+    newInstructionDiv.innerHTML = `
+      <input type="hidden" name="instruction[_destroy]" value="0"> 
+      <input type="text" name="recipe[instructions_attributes][${newIndex}][step]" placeholder="例)1" class="bg-gray-300 mb-1 w-10 block">
+<textarea name="recipe[instructions_attributes][${newIndex}][content]" placeholder="例）野菜を切り、飴色になるまでよく炒める。焦がさないように注意。" class="bg-gray-300 mb-2 w-40 h-45 block"></textarea>
+      <input type="button" value="削除" onclick="deleteRow(this)" class="underline mb-10">
+    `;
+
+    instructionsDiv.appendChild(newInstructionDiv);
+  });
+  function deleteRow(button) {
+    const instructionDiv = button.parentElement;
+    const hiddenField = instructionDiv.querySelector('input[type="hidden"]');
+    hiddenField.value = '1'; // _destroyを1に設定
+    instructionDiv.style.display = 'none'; // フォームを非表示にする
+  }
 </script>
