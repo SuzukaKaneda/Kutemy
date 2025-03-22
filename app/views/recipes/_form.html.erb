@@ -57,13 +57,13 @@
       </div>
       <button id="add-ingredient" type="button">＋材料を追加</button>
     </div>
-    <div class="mt-5 ml-50">
+    <div class="mt-5 ml-40">
       <div class="text-[20px] mb-5">
       【手順】
       </div>
-      <div id="instructions" class="flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div id="instructions" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         <%= f.fields_for :instructions do |instruction_fields| %>
-          <div class="instructions mr-10 flex flex-col">
+          <div class="instructions flex flex-col">
             <%= instruction_fields.hidden_field :_destroy %>
             <%= instruction_fields.text_field :step, placeholder: "例)1", class: "bg-gray-300 w-10 mb-1 p-1 text-lg font-semibold" %>
             <%= instruction_fields.text_area :content, placeholder: "例）野菜を切り、飴色になるまでよく炒める。焦がさないように注意。", 
