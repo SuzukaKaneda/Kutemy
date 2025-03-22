@@ -47,11 +47,11 @@
          【材料】
         </div>
         <%= f.fields_for :ingredients do |ingredient_fields| %>
-          <div class="ingredient">
+          <div class="ingredient flex items-center mb-3">
             <%= ingredient_fields.hidden_field :_destroy %>
-            <%= ingredient_fields.text_field :name, placeholder: " 例）にんじん", class: "bg-gray-300 mb-3 w-60" %>
-            <%= ingredient_fields.text_field :quantity, placeholder: "例）1本", class: "bg-gray-300 mb-3 ml-4 w-18" %>
-            <input type="button" value="削除" onclick="deleteRow(this)">
+            <%= ingredient_fields.text_field :name, placeholder: " 例）にんじん", class: "bg-gray-300 w-60" %>
+            <%= ingredient_fields.text_field :quantity, placeholder: "例）1本", class: "bg-gray-300 ml-5 w-18" %>
+            <input type="button" value="削除" class="ml-2" onclick="deleteRow(this)">
           </div>
         <% end %>
       </div>
@@ -61,14 +61,14 @@
       <div class="text-[20px] mb-5">
       【手順】
       </div>
-      <div id="instructions" class="flex grid grid-cols-3">
+      <div id="instructions" class="flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <%= f.fields_for :instructions do |instruction_fields| %>
-          <div class="instructions mr-10">
+          <div class="instructions mr-10 flex flex-col">
             <%= instruction_fields.hidden_field :_destroy %>
-            <%= instruction_fields.text_field :step, placeholder: "例)1", class: "bg-gray-300 mb-1 w-10 block" %>
+            <%= instruction_fields.text_field :step, placeholder: "例)1", class: "bg-gray-300 w-10 mb-1 p-1 text-lg font-semibold" %>
             <%= instruction_fields.text_area :content, placeholder: "例）野菜を切り、飴色になるまでよく炒める。焦がさないように注意。", 
-                class: "bg-gray-300 mb-2 w-40 h-45 block" %>
-            <input type="button" value="削除" onclick="deleteRow(this)" class="underline mb-10">
+                class: "bg-gray-300 w-55 h-30 mb-2 px-2 brock" %>
+            <input type="button" value="削除" onclick="deleteRow(this)" class="underline mb-2 text-left">
           </div>
         <% end %>
       </div>
@@ -105,13 +105,13 @@
     const newIndex = ingredientsDiv.children.length; // 現在の行数を取得
 
     const newIngredientDiv = document.createElement('div');
-    newIngredientDiv.className = 'ingredient';
+    newIngredientDiv.className = 'ingredient flex items-center mb-3'; // フレックスボックスを追加
   
     newIngredientDiv.innerHTML = `
       <input type="hidden" name="ingredient[_destroy]" value="0"> 
-      <input type="text" name="recipe[ingredients_attributes][${newIndex}][name]" placeholder=" 例）にんじん" class="bg-gray-300 mb-3 w-60">
-      <input type="text" name="recipe[ingredients_attributes][${newIndex}][quantity]" placeholder="例）1本" class="bg-gray-300 mb-3 ml-4 w-18">
-      <input type="button" value="削除" onclick="deleteRow(this)">
+      <input type="text" name="recipe[ingredients_attributes][${newIndex}][name]" placeholder=" 例）にんじん" class="bg-gray-300 w-60">
+      <input type="text" name="recipe[ingredients_attributes][${newIndex}][quantity]" placeholder="例）1本" class="bg-gray-300 ml-5 w-18">
+      <input type="button" value="削除" class="ml-2" onclick="deleteRow(this)">
     `;
 
     ingredientsDiv.appendChild(newIngredientDiv);
@@ -127,13 +127,13 @@
     const newIndex = instructionsDiv.children.length; // 現在の行数を取得
 
     const newInstructionDiv = document.createElement('div');
-    newInstructionDiv.className = 'instruction';
+    newInstructionDiv.className = 'instruction flex flex-col';
   
     newInstructionDiv.innerHTML = `
       <input type="hidden" name="instruction[_destroy]" value="0"> 
-      <input type="text" name="recipe[instructions_attributes][${newIndex}][step]" placeholder="例)1" class="bg-gray-300 mb-1 w-10 block">
-<textarea name="recipe[instructions_attributes][${newIndex}][content]" placeholder="例）野菜を切り、飴色になるまでよく炒める。焦がさないように注意。" class="bg-gray-300 mb-2 w-40 h-45 block"></textarea>
-      <input type="button" value="削除" onclick="deleteRow(this)" class="underline mb-10">
+      <input type="text" name="recipe[instructions_attributes][${newIndex}][step]" placeholder="例)1" class="bg-gray-300 w-10 mb-1 p-1 text-lg brock font-semibold">
+      <textarea name="recipe[instructions_attributes][${newIndex}][content]" placeholder="例）野菜を切り、飴色になるまでよく炒める。焦がさないように注意。" class="bg-gray-300 mb-2 w-55 h-30 px-2 brock"></textarea>
+      <input type="button" value="削除" onclick="deleteRow(this)" class="underline mb-2 text-left">
     `;
 
     instructionsDiv.appendChild(newInstructionDiv);
