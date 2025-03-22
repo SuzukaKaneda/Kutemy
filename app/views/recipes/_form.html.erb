@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="flex ml-230 whitespace-nowrap">
+  <div class="flex ml-210 whitespace-nowrap">
     <div class="pt-2">
       <%= link_to "レシピ一覧へ", recipes_path, onclick: "if (confirm('内容を破棄して戻ります')) { window.location.href = '#{recipes_path}'; } return false;" %>
     </div>
@@ -24,10 +24,10 @@
       <%= f.label :" ", style: "display: block;" %>
       <%= f.file_field :image,  id: 'image_input', style: "display: none;" %>
       <%= f.hidden_field :image_cache %>
-      <label for="image_input" class="bg-gray-200 text-center cursor-pointer inline-block w-[500px] h-[25px] flex items-center justify-center">
+      <label for="image_input" class="bg-gray-200 text-center cursor-pointer inline-block w-[400px] h-[25px] flex items-center justify-center">
         料理の写真をのせる
       </label>
-      <img id="image_preview" src="<%= @recipe.image.url %>" alt="Image Preview" style="display: block; width: 500px; height: auto" />
+      <img id="image_preview" src="<%= @recipe.image.url %>" alt="Image Preview" style="display: block; width: 400px; height: auto" />
     </div>
     <div class="text-[20px] py-2 ml-40">
       <%= f.label :" ", style: "display: block;" %>
