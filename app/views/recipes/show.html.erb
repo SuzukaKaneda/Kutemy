@@ -53,16 +53,32 @@
       </div>
     </div>
   </div>
-  <div class="text-[20px] ml-15 mb-5">
-    【材料】
-  </div>
-  <div class="ml-20">
-    <% @recipe.ingredients.each do |ingredient| %>
-      <div class="flex justify-between w-[350px] border-b border-gray-400 mb-2">
-        <span><%= ingredient.name %></span>
-        <span><%= ingredient.quantity %></span>
+  
+  <div class="flex">
+    <div class="ml-20">
+      <div class="text-[20px] mb-3 mt-3">
+       【材料】
       </div>
-    <% end %>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <div class="flex justify-between w-[350px] border-b border-gray-400 mb-2">
+          <span><%= ingredient.name %></span>
+          <span><%= ingredient.quantity %></span>
+        </div>
+      <% end %>
+    </div>
+    <div class="ml-50">
+      <div class="text-[20px] mb-3 mt-3">
+       【手順】
+      </div>
+      <div class="flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <% @recipe.instructions.each do |instruction| %>
+          <div class="flex flex-col mb-5 mr-10">
+            <span class="w-10 text-lg font-semibold pl-2"><%= instruction.step %></span>
+            <span class="mb-2 w-55 h-30 rounded-lg px-2"><%= instruction.content %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="rounded-lg w-130 border ml-150 mt-3 p-2" style="background-color: #F2EDED;"> <!-- 丸みを帯びた四角 -->
     <h2 class="text-[15px]">コツ・工夫点:</h2> <!-- タイトル -->
