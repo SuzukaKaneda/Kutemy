@@ -44,6 +44,8 @@ gem "carrierwave", "2.2.6"
 # 画像編集用
 gem "mini_magick"
 gem "cloudinary"
+# ログイン認証
+gem 'devise'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
