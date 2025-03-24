@@ -1,7 +1,6 @@
 <h2 class="ml-10 text-[25px] pt-3">ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field mt-5 text-[20px]">
     <%= f.label :email, class: "ml-60" %><br />

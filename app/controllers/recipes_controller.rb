@@ -29,7 +29,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to @recipe, notice: "Post was successfully created." }
+        format.html { redirect_to @recipe, notice: "レシピを作成しました。" }
         format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -57,7 +57,7 @@ class RecipesController < ApplicationController
     @recipe.destroy!
 
     respond_to do |format|
-      format.html { redirect_to recipes_path, status: :see_other, notice: "Recipe was successfully destroyed." }
+      format.html { redirect_to recipes_path, status: :see_other, notice: "レシピの削除に成功しました。" }
       format.json { head :no_content }
     end
   end
