@@ -1,13 +1,27 @@
 ja:
-  errors:
-    messages:
-      not_found: "は見つかりませんでした"
-#      not_found: "not found"
-      already_confirmed: "は既に登録済みです"
-#      already_confirmed: "was already confirmed"
-      not_locked: "は凍結されていません"
-#      not_locked: "was not locked"
-
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "が入力されていません。"
+            email:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            password:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            password_confirmation:
+              confirmation: "「パスワード」と「パスワード確認」が一致しません。"
+              
+            
   devise:
     failure:
       unauthenticated: 'ログインしてください。'
@@ -24,21 +38,6 @@ ja:
 #      timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'アカウントがアクティベートされていません。'
 #      inactive: 'Your account was not activated yet.'
-    sessions:
-      signed_in: 'ログインしました。'
-#      signed_in: 'Signed in successfully.'
-      signed_out: 'ログアウトしました。'
-#      signed_out: 'Signed out successfully.'
-    passwords:
-      send_instructions: 'パスワードのリセット方法を数分以内にメールでご連絡します。'
-#      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'パスワードを変更しました。'
-#      updated: 'Your password was changed successfully. You are now signed in.'
-    confirmations:
-      send_instructions: '登録方法を数分以内にメールでご連絡します。'
-#      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: アカウント登録を受け付けました。確認のメールをお送りします。'
-#      confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
       signed_up: 'アカウント登録をしました。'
 #      signed_up: 'You have signed up successfully. If enabled, a confirmation was sent to your e-mail.'
@@ -58,6 +57,3 @@ ja:
       reset_password_instructions:
         subject: 'パスワードの再設定'
 #        subject: 'Reset password instructions'
-      unlock_instructions:
-        subject: 'アカウントの凍結解除'
-#        subject: 'Unlock Instructions'
