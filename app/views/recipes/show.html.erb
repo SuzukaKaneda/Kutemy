@@ -21,11 +21,9 @@
     <div class="mr-10 pt-3">
       <%= link_to "レシピ一覧へ", recipes_path %>
     </div>
-    <% if current_user.id == @recipe.user_id %>
-      <%= link_to "削除", recipe_path(@recipe), data: { turbo_method: :delete }, class: "rounded-lg  bg-red-500 text-white px-4 my-2 mr-2", onclick: "confirm('本当に削除しますか？')" %>
-      <%= link_to "編集", edit_recipe_path(@recipe), class: "rounded-lg bg-green-400 text-stone-700 px-4 my-2" %> 
-      <% end %>
-    </div>
+    <%= link_to "削除", recipe_path(@recipe), data: { turbo_method: :delete }, class: "rounded-lg  bg-red-500 text-white px-4 my-2 mr-2", onclick: "confirm('本当に削除しますか？')" %>
+    <%= link_to "編集", edit_recipe_path(@recipe), class: "rounded-lg bg-green-400 text-stone-700 px-4 my-2" %> 
+  </div>
 
   <div class="flex">
     <div class="ml-10 py-2 mr-50">
