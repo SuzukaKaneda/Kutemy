@@ -1,4 +1,4 @@
-<h2 class="ml-10 text-[25px] pt-3">ログイン</h2>
+<h2 class="ml-10 text-[25px]">ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -24,7 +24,7 @@
   <% end %>
 
   <div class="actions flex ml-128 mt-10 text-[20px]">
-    <%= f.submit "ログイン", class: "rounded-lg bg-green-300 p-1"%>
+    <%= f.submit "ログイン", class: "rounded-lg bg-green-300 p-1 cursor-pointer"%>
   </div>
 <% end %>
 

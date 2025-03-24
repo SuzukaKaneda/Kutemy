@@ -4,16 +4,24 @@
       <div class="text-[16px] font-normal text-left ml-10 pt-4">
         さぁ、まずはひとくち
       </div>
-      <div class="flex justify-end font-bold items-center space-x-8  mr-10"> 
+      <div class="flex justify-end font-bold items-center space-x-8  mr-20"> 
         <div class="flex flex-col items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
           <path fill="currentColor" d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22m7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A1 1 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a1 1 0 0 0-.293-.707z"/>
           </svg>
         </div>
-        <div class="flex flex-col items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-          <path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20z"/>
-          </svg>
+        <div class="relative inline-block flex flex-col items-center">
+          <div class="icon cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20z"/>
+            </svg>
+          </div>
+          <div class="menu absolute hidden bg-white border border-gray-300 mt-1 w-40 shadow-lg">
+            <ul>
+              <%= link_to "ユーザー詳細", user_path(current_user.id), class: "block px-4 py-2 hover:bg-gray-100" %>
+              <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-4 py-2 hover:bg-gray-100" %>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -53,3 +61,24 @@
     </div>
   </nav>
 </header>
+
+<script>
+const icon = document.querySelector('.icon');
+const menu = document.querySelector('.menu');
+
+icon.addEventListener('mouseenter', () => {
+  menu.classList.remove('hidden'); // メニューを表示
+});
+
+icon.addEventListener('mouseleave', () => {
+  menu.classList.add('hidden'); // メニューを非表示
+});
+
+menu.addEventListener('mouseenter', () => {
+  menu.classList.remove('hidden'); // メニューを表示
+});
+
+menu.addEventListener('mouseleave', () => {
+  menu.classList.add('hidden'); // メニューを非表示
+});
+</script>

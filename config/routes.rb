@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:show]
   
   resources :recipes, only: %i[index new create show edit update destroy]
   root "recipes#index"
