@@ -1,0 +1,19 @@
+<h2 class="ml-10 text-[25px]">アカウント名変更</h2>
+  <%= form_with model: @user do |f| %>
+    <div class="field mt-5 text-[20px] ml-60">
+      <span>アカウント名：</span>
+      <div class= "ml-10 rounded-lg border w-140 h-12 mt-4 p-2"  style="background-color: #F2EDED;">
+        <div class="text-[18px] text-left ml-5">
+          <%= @user.name %>
+        </div>
+      </div>
+    </div>
+    <div class="field mt-15 text-[20px]">
+      <%= f.label :"新しいアカウント名：", class: "ml-60" %><br />
+      <div class= "flex ml-70">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "bg-gray-300 w-140 h-10 mt-3 p-2" %>
+      </div>
+    </div>
+    <div class="ml-130 mt-20">
+    <%= f.submit "更新", class: "rounded-lg bg-green-300 text-stone-700 px-4 cursor-pointer" %>
+<% end %>

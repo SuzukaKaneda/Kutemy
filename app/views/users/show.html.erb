@@ -1,9 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
 <h2 class="ml-10 text-[25px]">ユーザー詳細</h2>
 <div class="field mt-5 text-[20px] ml-60">
   <span>アカウント名：</span>
-  <div class= "ml-10 rounded-lg border w-140 h-12 mt-4 p-2"  style="background-color: #F2EDED;">
-    <div class="text-[18px] text-left ml-5">
-      <%= @user.name %>
+  <div class="flex">
+    <div class= "ml-10 rounded-lg border w-140 h-12 mt-4 p-2"  style="background-color: #F2EDED;">
+      <div class="text-[18px] text-left ml-5">
+        <%= @user.name %>
+      </div>
+    </div>
+    <div class="ml-3 pt-7">
+      <%= link_to "編集", edit_user_path %>
     </div>
   </div>
 </div>
