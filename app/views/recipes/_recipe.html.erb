@@ -1,25 +1,27 @@
-<div id="<%= dom_id recipe %>">
-  <div class="flex flex-wrap justify-center">
-    <div class="rounded-lg m-4 p-6 w-80">
-      <dev class="flex justify-center">
-        <%= cl_image_tag(recipe.image.url(:index_size)) %>
-      </dev>
-      <div class="text-[20px] font-bold text-center">
-        <%=  link_to "#{recipe.title}", recipe %>
-      </div>
-      <div class="flex justify-between">
-        <div class="flex ml-3">
-          <svg class="h-8 w-8 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-          </svg>
-          <div class="mt-2">
-            42
-          </div>
+<%= link_to(recipe)  do %>
+  <div id="<%= dom_id recipe %>">
+    <div class="flex flex-wrap justify-center">
+      <div class="rounded-lg m-4 p-6 w-80">
+        <dev class="flex justify-center">
+          <%= cl_image_tag(recipe.image.url(:index_size)) %>
+        </dev>
+        <div class="text-[20px] font-bold text-center">
+        <%= "#{recipe.title}" %>
         </div>
-        <div class="text-[15px] mt-1 mr-3">
-          <p><%= "克服ポイント：""#{recipe.get_point}" %></p>
+        <div class="flex justify-between">
+          <div class="flex ml-3">
+            <svg class="h-8 w-8 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+            <div class="mt-2">
+              42
+            </div>
+          </div>
+          <div class="text-[15px] mt-1 mr-3">
+            <p><%= "克服ポイント：""#{recipe.get_point}" %></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
