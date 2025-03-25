@@ -2,8 +2,17 @@
 
 <% content_for :title, "Recipes" %>
 
-<div class="text-left ml-10 text-[20px] font-bold py-2">
-  レシピ一覧
+<div class="flex justify-between">
+  <div class="text-left ml-10 text-[20px] font-bold py-2">
+    レシピ一覧
+  </div>
+  <div class="flex justify-end pt-4 mr-10">
+    <% if user_signed_in? %>
+      <%= "こんにちは、#{current_user.name}さん" %>
+    <% else %>
+      <%= "ようこそ、ゲストさん" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="flex justify-center grid grid-cols-3 gap-5">
