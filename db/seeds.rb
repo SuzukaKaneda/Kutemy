@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Tag.create([
+  { name: "ゴーヤ" },
+  { name: "セロリ" },
+  { name: "レバー" },
+  { name: "ナス" },
+  { name: "グリーンピース" },
+  { name: "ピーマン" },
+  { name: "ネギ" },
+  { name: "ウニ" },
+  { name: "トマト" },
+  { name: "タマネギ" },
+])
