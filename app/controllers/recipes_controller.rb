@@ -3,7 +3,12 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    if params[:tag_id]
+      @recipes = Recipe.with_tag(params[:tag_id])
+    else
+      @recipes = Recipe.all
+    end
+    @tags = Tag.all
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -29,6 +34,9 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
+        if params[:recipe][:tag_id].present?
+          RecipeTag.create(recipe_id: @recipe.id, tag_id: params[:recipe][:tag_id])
+        end
         format.html { redirect_to @recipe, notice: "レシピを作成しました。" }
         format.json { render :show, status: :created, location: @recipe }
       else
@@ -43,6 +51,11 @@ class RecipesController < ApplicationController
   def update
     respond_to do |format|
       if @recipe.update(recipe_params)
+        @recipe.recipe_tags.destroy_all
+        if params[:recipe][:tag_id].present?
+          RecipeTag.create(recipe_id: @recipe.id, tag_id: params[:recipe][:tag_id])
+        end
+
         format.html { redirect_to @recipe, notice: "レシピの更新に成功しました。" }
         format.json { render :show, status: :ok, location: @recipe }
       else
@@ -70,7 +83,7 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title, :trick, :get_point, :image, :image_cache, ingredients_attributes: [:id, :name, :quantity, :_destroy], instructions_attributes: [:id, :step, :content, :_destroy] )
+      params.require(:recipe).permit(:title, :trick, :get_point, :image, :image_cache, tag_id: [], ingredients_attributes: [ :id, :name, :quantity, :_destroy ], instructions_attributes: [ :id, :step, :content, :_destroy ])
     end
 
     def retouch_image(image)

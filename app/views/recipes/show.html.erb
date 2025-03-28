@@ -35,9 +35,12 @@
       <div class="text-[50px]">
        <%= @recipe.title %>
       </div>
-      <div class="rounded-lg w-100 border mt-3 p-2" style="background-color: #F2EDED;"> <!-- 丸みを帯びた四角 -->
-        <h2 class="text-[15px]">苦手な食材:</h2> <!-- タイトル -->
-       </div>
+      <div class=" flex rounded-lg w-90 border mt-3 p-1" style="background-color: #F2EDED;"> <!-- 丸みを帯びた四角 -->
+        <h2 class="text-[15px] ml-2">苦手な食材:</h2> <!-- タイトル -->
+        <% @recipe.tags.each do |tag| %>
+          <span class="text-[25px] ml-10"><%= tag.name %></span>
+        <% end %>
+      </div>
       <div class="flex mt-30">
         <div class="flex">
           <div>
@@ -58,7 +61,7 @@
   
   <div class="flex">
     <div class="ml-20">
-      <div class="text-[20px] mb-3 mt-3">
+      <div class="text-[20px] mb-3 mt-3 w-[350px]">
        【材料】
       </div>
       <% @recipe.ingredients.each do |ingredient| %>
