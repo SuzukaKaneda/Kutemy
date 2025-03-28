@@ -22,3 +22,10 @@
   <% end %>
   
 </div>
+
+<h1>全てのタグ</h1>
+  <ul>
+    <% @tags.each do |tag| %>
+      <li><%= link_to "#{tag.name}", recipes_path(tag_id: tag.id) %></li>
+    <% end %>
+  </ul>

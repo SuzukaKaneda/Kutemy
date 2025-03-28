@@ -10,4 +10,6 @@ class Recipe < ApplicationRecord
 
   has_many :recipe_tags, dependent: :destroy
   has_many :tags, through: :recipe_tags
+
+  scope :with_tag, ->(tag_id) { joins(:recipe_tags).where(recipe_tags: { tag_id: tag_id }) }
 end
