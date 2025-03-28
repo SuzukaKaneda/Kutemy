@@ -14,18 +14,26 @@
     <% end %>
   </div>
 </div>
-
-<div class="flex justify-center grid grid-cols-3 gap-5">
-  <% @recipes.each do |recipe| %>
-    <%= render recipe %>
-   
-  <% end %>
-  
+<div class="ml-10 mt-3">
+<% if @recipes.present? %>
+  <%= "#{@tag.name}のレシピ：#{@recipes.count}件" %>
+<% else %>
+  <%= "レシピが存在しません" %>
+<% end %>
 </div>
 
-<h1>全てのタグ</h1>
-  <ul>
-    <% @tags.each do |tag| %>
-      <li><%= link_to "#{tag.name}", recipes_path(tag_id: tag.id) %></li>
+<div class="flex">
+  <div class="flex justify-center grid grid-cols-3 gap-5 w-230">
+    <% @recipes.each do |recipe| %>
+      <%= render recipe %>
     <% end %>
-  </ul>
+  </div>
+  <div class="mt-65">
+    <h1 class="mb-5">他の食材から探す</h1>
+    <ul class="ml-4">
+      <% @tags.each do |tag| %>
+        <li><%= link_to "・#{tag.name}", recipes_path(tag_id: tag.id) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

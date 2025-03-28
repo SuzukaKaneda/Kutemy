@@ -9,6 +9,11 @@ class RecipesController < ApplicationController
       @recipes = Recipe.all
     end
     @tags = Tag.all
+    @tag = Tag.find(params[:tag_id])
+  end
+
+  def search
+    @tags = Tag.all
   end
 
   # GET /recipes/1 or /recipes/1.json

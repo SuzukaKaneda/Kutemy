@@ -14,12 +14,14 @@
 
 <% content_for :title, "Showing recipe" %>
 
-<h1 class="ml-10">レシピ詳細</h1>
+<div class="text-left ml-10 text-[20px] font-bold py-2">
+  レシピ詳細
+</div>
 
 <div>
   <div class="flex justify-end mr-10 mb-4">
     <div class="mr-10 pt-3">
-      <%= link_to "レシピ一覧へ", recipes_path %>
+      <%= link_to "レシピ検索画面へ", recipes_search_path %>
     </div>
     <% if current_user && current_user.id == @recipe.user_id %>
       <%= link_to "削除", recipe_path(@recipe), data: { turbo_method: :delete }, class: "rounded-lg  bg-red-500 text-white px-4 my-2 mr-2", onclick: "confirm('本当に削除しますか？')" %>

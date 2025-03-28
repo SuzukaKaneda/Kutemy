@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="ml-10 pt-10">
+  <h1 class="mb-10 text-[20px] font-bold">○苦手な食材から探す</h1>
+  <div class="flex justify-center w-230 ml-15 grid grid-cols-4 gap-10 ">
+    <% @tags.each do |tag| %>
+      <%= link_to(recipes_path(tag_id: tag.id)) do %>
+        <div class="rounded-lg border w-50 h-20 flex items-center justify-center" style="background-color: #F2EDED;">
+          <%= "#{tag.name}" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
