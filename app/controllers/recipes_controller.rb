@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
 
   def look
     @tags = Tag.all
+    @q = Recipe.ransack(params[:q])
   end
 
   # GET /recipes/1 or /recipes/1.json
