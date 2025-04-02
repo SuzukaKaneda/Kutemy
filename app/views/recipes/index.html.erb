@@ -15,18 +15,25 @@
   </div>
 </div>
 
-
 <%= search_form_for @q, url: recipes_path do |f| %>
-  <div class="flex justify-center my-3">
-    <%= f.search_field :title_cont, placeholder: "レシピ名から検索", class: "w-130 h-10 p-2 border rounded-lg", style: "background-color: #F2EDED;" %>
+  <div class="flex ml-10">
+    <%= f.search_field :title_cont, placeholder: "レシピ名から検索", class: "w-100 h-10 p-2 border rounded-lg", style: "background-color: #F2EDED;" %>
     <div class="ml-5">
       <%= f.submit class: "btn btn-primary cursor-pointer rounded-lg border mt-1 py-1 px-3", style: "background-color: #F2EDED;" %>
     </div>
   </div>
 <% end %>
 
-<div class="flex">
-  <div class="flex justify-center grid grid-cols-3 gap-5 w-230 ml-10 mt-5">
+<div class="ml-10 mt-5 text-[18px]">
+<% if @recipes.present? %>
+  <%= "検索結果：#{@recipes.count}件" %>
+<% else %>
+  <%= "レシピが存在しません。" %>
+<% end %>
+</div>
+
+<div class="flex mt-8">
+  <div class="flex justify-center grid grid-cols-3 gap-5 w-230 ml-10">
     <% @recipes.each do |recipe| %>
       <%= render recipe %>
     <% end %>
