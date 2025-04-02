@@ -30,13 +30,15 @@
       <div class="text-[45px] font-bold text-left ml-10">
         Kutemy
       </div>
-      <div class="flex justify-end font-bold items-center space-x-8 h-[80px] mr-10"> 
-        <div class="flex flex-col items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 15l6 6m-11-4a7 7 0 1 1 0-14a7 7 0 0 1 0 14"/>
-          </svg>
-          <span class="text-[10px]">レシピを探す</span>
-        </div>
+      <div class="flex justify-end font-bold items-center space-x-8 h-[80px] mr-10">
+        <%= link_to(recipes_look_path)  do %>
+          <div class="flex flex-col items-center">
+             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 15l6 6m-11-4a7 7 0 1 1 0-14a7 7 0 0 1 0 14"/>
+            </svg>
+            <span class="text-[10px]">レシピを探す</span>
+          </div>
+        <% end %>
         <div class="flex flex-col items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20">
           <path fill="currentColor" fill-rule="evenodd" d="M3.172 5.172a4 4 0 0 1 5.656 0L10 6.343l1.172-1.171a4 4 0 1 1 5.656 5.656L10 17.657l-6.828-6.829a4 4 0 0 1 0-5.656" clip-rule="evenodd"/>

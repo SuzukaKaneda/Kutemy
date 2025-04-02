@@ -1,12 +1,12 @@
-<%= link_to(recipe)  do %>
-  <div id="<%= dom_id recipe %>">
-    <div class="flex flex-wrap justify-center">
-      <div class="rounded-lg m-4 p-6 w-80">
+<div id="<%= dom_id recipe %>">
+  <div class="flex flex-wrap justify-center">
+    <div class="m-6">
+      <%= link_to(recipe)  do %>
         <dev class="flex justify-center">
           <%= cl_image_tag(recipe.image.url(:index_size)) %>
         </dev>
         <div class="text-[20px] font-bold text-center">
-        <%= "#{recipe.title}" %>
+          <%= "#{recipe.title}" %>
         </div>
         <div class="flex justify-between">
           <div class="flex ml-3">
@@ -21,7 +21,8 @@
             <p><%= "克服ポイント：""#{recipe.get_point}" %></p>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
-<% end %>
+</div>
+
