@@ -21,7 +21,7 @@
 <div>
   <div class="flex justify-end mr-10 mb-4">
     <div class="mr-10 pt-3">
-      <%= link_to "レシピ検索画面へ", recipes_search_path %>
+      <%= link_to "レシピ検索画面へ", recipes_look_path %>
     </div>
     <% if current_user && current_user.id == @recipe.user_id %>
       <%= link_to "削除", recipe_path(@recipe), data: { turbo_method: :delete }, class: "rounded-lg  bg-red-500 text-white px-4 my-2 mr-2", onclick: "confirm('本当に削除しますか？')" %>

@@ -3,16 +3,16 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    if params[:tag_id]
-      @recipes = Recipe.with_tag(params[:tag_id])
-    else
-      @recipes = Recipe.all
-    end
+    @q = Recipe.ransack(params[:q])
+      if params[:tag_id].present?
+        @recipes = Recipe.with_tag(params[:tag_id]) 
+      else
+        @recipes = @q.result
+      end
     @tags = Tag.all
-    @tag = Tag.find(params[:tag_id])
   end
 
-  def search
+  def look
     @tags = Tag.all
   end
 
@@ -81,6 +81,7 @@ class RecipesController < ApplicationController
   end
 
   private
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = current_user.recipes.find(params[:id])

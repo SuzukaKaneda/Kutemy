@@ -12,4 +12,7 @@ class Recipe < ApplicationRecord
   has_many :tags, through: :recipe_tags
 
   scope :with_tag, ->(tag_id) { joins(:recipe_tags).where(recipe_tags: { tag_id: tag_id }) }
+  def self.ransackable_attributes(auth_object = nil)
+    %w[title] # 検索可能な属性を指定
+  end
 end
