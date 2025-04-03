@@ -1,7 +1,9 @@
 class PointsController < ApplicationController
+
   def index
     @user = User.find(current_user.id)
   end
+
   def create
     @user = User.find(current_user.id)
     @point = @user.points.build(add: params[:add])
@@ -12,4 +14,5 @@ class PointsController < ApplicationController
       render :new
     end
   end
+
 end

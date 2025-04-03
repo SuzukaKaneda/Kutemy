@@ -20,6 +20,33 @@ class UsersController < ApplicationController
     end
   end
 
+  def total_point
+    @user = User.find(current_user.id)
+    @point = @user.point
+  end
+
+  def add_point
+    @user = User.find(current_user.id)
+    @user.point += params[:add].to_i
+  
+    if @user.save
+      redirect_to user_point_path(@user), notice: 'ポイントが加算されました。'
+    else
+      render :new
+    end
+  end
+
+  def subtract_point
+    @user = User.find(current_user.id)
+    @user.point -= params[:subtract].to_i
+  
+    if @user.save
+      redirect_to user_point_path(@user), notice: 'ポイントが減算されました。'
+    else
+      render :new
+    end
+  end
+
   private
 
   def user_params

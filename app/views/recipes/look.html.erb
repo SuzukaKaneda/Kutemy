@@ -1,11 +1,9 @@
-<p style="color: green"><%= notice %></p>
-
 <div class="flex justify-end pt-4 mr-10">
-    <% if user_signed_in? %>
-      <%= "こんにちは、#{current_user.name}さん" %>
-    <% else %>
-      <%= "ようこそ、ゲストさん" %>
-    <% end %>
+  <% if user_signed_in? %>
+    <%= "こんにちは、#{current_user.name}さん" %>
+  <% else %>
+    <%= "ようこそ、ゲストさん" %>
+  <% end %>
 </div>
 
 <div class="pt-5">

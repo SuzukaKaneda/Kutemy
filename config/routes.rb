@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: %i[show edit update] do
-    resources :points, only: [:create, :index]
+    get "point" => "users#total_point"
+    post "add_point" => "users#add_point"
+    post "subtract_point" => "users#subtract_point"
   end
 
   get "recipes/look" => "recipes#look"
