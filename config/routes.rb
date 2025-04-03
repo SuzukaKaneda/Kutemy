@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: %i[show edit update]
+  resources :users, only: %i[show edit update] do
+    resources :points, only: [:create, :index]
+  end
 
   get "recipes/look" => "recipes#look"
   resources :recipes, only: %i[index new create show edit update destroy]
