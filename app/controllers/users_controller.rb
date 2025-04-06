@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def total_point
     @user = User.find(current_user.id)
     @point = @user.point
+    @reward = Reward.last
   end
 
   def add_point

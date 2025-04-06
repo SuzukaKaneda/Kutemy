@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     get "point" => "users#total_point"
     post "add_point" => "users#add_point"
     post "subtract_point" => "users#subtract_point"
+
+    resources :rewards, only: %i[new create index edit update]
   end
+
+  
 
   get "recipes/look" => "recipes#look"
   resources :recipes, only: %i[index new create show edit update destroy]

@@ -1,0 +1,21 @@
+<div class="text-left ml-10 text-[20px] font-bold py-2">
+  克服ポイントカード
+</div>
+<p class="text-left ml-10">目標ポイント数と、達成時のごほうびを設定しましょう。</p>
+
+<div class="ml-40 mt-25">
+  <%= form_with model: @reward, url: user_rewards_path(current_user) do |f| %>
+    <div class="flex  items-center">
+      <p>目標</p>
+      <%= f.text_field :required_points, style: "font-size: 20px; width: 80px; height: 60px; text-align: center;", placeholder: "(例)15", class: "ml-5 mb-4 bg-gray-300" %>
+      <p class="ml-5">ポイント</p>
+    </div>
+    <div class="mt-10">
+      <p>ごほうび</p>
+      <%= f.text_area :content, style: "font-size: 18px; width: 700px; ", placeholder: "(例)好きなお店に連れていく。", class: "mb-4 bg-gray-300 p-2" %>
+    </div>
+    <div class="ml-75 mt-10">
+      <%= f.submit "設定", class: "btn btn-primary cursor-pointer rounded-lg border mt-1 py-2 px-4", style: "background-color: #F2EDED;" %>
+    </div>
+  <% end %>
+</div>

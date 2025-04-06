@@ -30,3 +30,19 @@
     <%= submit_tag "減算", class: "rounded-lg border w-15 h-10  ml-5", style: "background-color: #F2EDED;" %>
   </div>
 <% end %>
+
+<div class="flex justify-center mt-10">
+  <div>
+    <div class="flex items-end">
+      <span class="text-[24px]">目標： </span>
+      <span class="text-[28px] rounded-lg border px-3"  style="background-color: #F2EDED;"><%= "#{@reward.required_points}" %></span>
+      <span class="text-[24px] ml-2"> ポイント</span>
+    </div>
+    <div class="mt-5">
+      <p class="text-[24px]">ごほうび：</p>
+      <div class="w-150 rounded-lg w-150 border px-3"  style="background-color: #F2EDED;">
+        <span class="text-[28px]"><%= "#{@reward.content}" %></span>
+      </div>
+      </div>
+  </div>
+</div>
