@@ -1,0 +1,11 @@
+<div class="text-left ml-10 text-[20px] font-bold mb-10 py-5">
+  今までのごほうび
+</div>
+<div>
+  <% @rewards.each do |reward| %>
+    <div class="rounded-lg w-200 h-15 border ml-40 text-[18px] mt-5 p-2 flex items-center" style="background-color: #F2EDED;">
+      <span><%= "目標： #{reward.required_points}ポイント" %></span>
+      <span class="ml-20"><%= "ごほうび： #{reward.content}" %></span>
+    </div>
+  <% end %>
+</div>

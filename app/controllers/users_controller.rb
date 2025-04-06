@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def total_point
     @user = User.find(current_user.id)
     @point = @user.point
+    @reward = Reward.where(user_id: current_user.id).order(created_at: :desc).limit(1).first
   end
 
   def add_point
