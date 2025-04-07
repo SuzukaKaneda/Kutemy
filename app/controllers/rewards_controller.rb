@@ -17,7 +17,7 @@ class RewardsController < ApplicationController
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @reward.errors, status: :unprocessable_entity }
         end
-      end
+    end
 
   end
 

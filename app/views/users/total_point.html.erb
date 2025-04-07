@@ -46,3 +46,30 @@
       </div>
   </div>
 </div>
+
+<div id="goalAchievedModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-gray-300/50">
+  <div class="modal-content bg-white p-6 rounded-lg shadow-lg text-center max-w-md w-full">
+    <span class="close-button cursor-pointer text-2xl absolute top-4 right-4">&times;</span>
+    <h2 class="text-2xl font-bold">おめでとう！</h2>
+    <p>目標ポイントを達成しました！</p>
+  </div>
+</div>
+
+<script>
+  const targetPoints = <%= @reward.required_points %>;
+  const userPoints = <%= @point %>;
+
+  function showModal() {
+    document.getElementById("goalAchievedModal").classList.remove("hidden");
+  }
+
+  document.querySelector(".close-button").addEventListener("click", function() {
+    document.getElementById("goalAchievedModal").classList.add("hidden");
+  });
+
+  // ポイントチェックの後に呼び出す
+  if (userPoints > targetPoints) {
+    showModal();
+  }
+</script>
+
