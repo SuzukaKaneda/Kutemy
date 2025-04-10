@@ -77,7 +77,9 @@
   </nav>
 </header>
 
+
 <script>
+document.addEventListener('turbo:load', () => {
 const user_icon = document.querySelector('.user_icon');
 const user_menu = document.querySelector('.user_menu');
 
@@ -95,5 +97,6 @@ user_menu.addEventListener('mouseenter', () => {
 
 user_menu.addEventListener('mouseleave', () => {
   user_menu.classList.add('hidden'); // メニューを非表示
+});
 });
 </script>

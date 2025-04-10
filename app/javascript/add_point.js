@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const targetPoints = <%= @reward.required_points %>;
-  let userPoints = <%= @point %>;
-  const userId = <%= current_user.id %>;
+  const targetPoints = document.getElementById("target-points").dataset.points;
+  let userPoints = document.getElementById("user-points").dataset.points;
+  const userId = document.getElementById("current-user").dataset.id;
+
 
   function showModal() {
     document.getElementById("goalAchievedModal").classList.remove("hidden");
