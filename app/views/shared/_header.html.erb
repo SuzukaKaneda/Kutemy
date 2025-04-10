@@ -11,12 +11,12 @@
           </svg>
         </div>
         <div class="relative inline-block flex flex-col items-center">
-          <div class="icon cursor-pointer">
+          <div class="user_icon cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
             <path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20z"/>
             </svg>
           </div>
-          <div class="menu absolute hidden bg-white border border-gray-300 mt-1 w-40 shadow-lg">
+          <div class="user_menu absolute hidden bg-white border border-gray-300 mt-1 w-40 shadow-lg">
             <ul>
               <%= link_to "ユーザー詳細", user_path(current_user.id), class: "block px-4 py-2 hover:bg-gray-100" %>
               <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-4 py-2 hover:bg-gray-100" %>
@@ -78,22 +78,22 @@
 </header>
 
 <script>
-const icon = document.querySelector('.icon');
-const menu = document.querySelector('.menu');
+const user_icon = document.querySelector('.user_icon');
+const user_menu = document.querySelector('.user_menu');
 
-icon.addEventListener('mouseenter', () => {
-  menu.classList.remove('hidden'); // メニューを表示
+user_icon.addEventListener('mouseenter', () => {
+  user_menu.classList.remove('hidden'); // メニューを表示
 });
 
-icon.addEventListener('mouseleave', () => {
-  menu.classList.add('hidden'); // メニューを非表示
+user_icon.addEventListener('mouseleave', () => {
+  user_menu.classList.add('hidden'); // メニューを非表示
 });
 
-menu.addEventListener('mouseenter', () => {
-  menu.classList.remove('hidden'); // メニューを表示
+user_menu.addEventListener('mouseenter', () => {
+  user_menu.classList.remove('hidden'); // メニューを表示
 });
 
-menu.addEventListener('mouseleave', () => {
-  menu.classList.add('hidden'); // メニューを非表示
+user_menu.addEventListener('mouseleave', () => {
+  user_menu.classList.add('hidden'); // メニューを非表示
 });
 </script>

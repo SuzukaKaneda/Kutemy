@@ -29,9 +29,10 @@ class UsersController < ApplicationController
   def add_point
     @user = User.find(current_user.id)
     @user.point += params[:add].to_i
-  
+    @point = @user.point
+    @reward = Reward.where(user_id: current_user.id).order(created_at: :desc).limit(1).first
     if @user.save
-      redirect_to user_point_path(@user), notice: 'ポイントが加算されました。'
+      redirect_to user_point_path(@user), notice: 'ポイントが加算されました。' 
     else
       render :new
     end
