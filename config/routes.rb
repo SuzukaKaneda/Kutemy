@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     post "add_point" => "users#add_point"
     post "subtract_point" => "users#subtract_point"
 
-    resources :rewards, only: %i[new create index edit update]
+    resources :rewards, only: %i[new create index] do
+    post "update_completed" =>"rewards#update_completed"
+    end
   end
 
   

@@ -53,7 +53,7 @@
             <span class="text-[10px]">投稿する</span>
           </div>
         <% end %>
-        <% if current_user.rewards.present? %>
+        <% if current_user.rewards.where(completed: false).present? %>
           <%= link_to(user_point_path(current_user.id))  do %>
             <div class="flex flex-col items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20">
