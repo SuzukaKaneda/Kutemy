@@ -116,21 +116,24 @@ document.addEventListener('turbo:load', () => {
 
     // AJAXでサーバにポイントを加算するリクエストを送信
     fetch(this.action, {
-      method: 'POST',
-      body: new URLSearchParams(new FormData(this)),
-      headers: {
-        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-      }
-    }).then(response => {
-      if (response.ok) {
-        // サーバからのレスポンスを受けた後にポイントチェック
-        if (userPoints >= targetPoints) {
-         showModal(); // モーダルを表示
-        } else {
-          // リダイレクト処理
-         window.location.href = `/users/${userId}/point`; // リダイレクト先のURLを指定
+        method: 'POST',
+        body: new URLSearchParams(new FormData(this)),
+        headers: {
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         }
-      }
+    }).then(response => {
+        if (response.ok) {
+            // サーバからのレスポンスを受けた後にポイントチェック
+            if (userPoints >= targetPoints) {
+                showModal(); // モーダルを表示
+            } else {
+                // リダイレクト処理
+                window.location.href = `/users/${userId}/point`; // リダイレクト先のURLを指定
+            }
+        }
+    }).finally(() => {
+        // 成功・失敗に関わらずボタンを再度有効化
+        submitButton.disabled = false;
     });
   });
 });
