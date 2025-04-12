@@ -107,6 +107,10 @@ document.addEventListener('turbo:load', () => {
   document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault(); // デフォルトのフォーム送信を防ぐ
 
+    // 送信ボタンを無効化
+    const submitButton = this.querySelector('input[type="submit"]');
+    submitButton.disabled = true;
+
     const addPoints = parseInt(document.querySelector("input[name='add']").value, 10);
     userPoints += addPoints; // ポイントを加算
 
