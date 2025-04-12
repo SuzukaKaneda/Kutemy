@@ -4,6 +4,8 @@ class RewardsController < ApplicationController
     end
 
   def new
+    @user = User.find(current_user.id)
+    @point = @user.point
     @reward = Reward.new
   end
 
@@ -11,14 +13,19 @@ class RewardsController < ApplicationController
     @reward = current_user.rewards.build(reward_params)
     respond_to do |format|
         if @reward.save
-          format.html { redirect_to user_rewards_path, notice: "目標を作成しました。" }
-          format.json { render :user_rewards_path, status: :created, location: @reward }
+          format.html { redirect_to user_point_path, notice: "目標を作成しました。" }
+          format.json { render :user_point_path, status: :created, location: @reward }
         else
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @reward.errors, status: :unprocessable_entity }
         end
-      end
+    end
+  end
 
+  def update_completed
+    @reward = Reward.find(params[:reward_id])
+    @reward.update(completed: true)
+    head :ok
   end
 
   private

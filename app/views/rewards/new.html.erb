@@ -2,8 +2,11 @@
   克服ポイントカード
 </div>
 <p class="text-left ml-10">目標ポイント数と、達成時のごほうびを設定しましょう。</p>
+<span class="text-left ml-10">＊現在のポイント数は</span>
+<span class="rounded-lg border py-1 px-2" style="background-color: #F2EDED;"><%= "#{@user.point}" %></span>
+<span>ポイントです。</span>
 
-<div class="ml-40 mt-25">
+<div class="ml-40 mt-15">
   <%= form_with model: @reward, url: user_rewards_path(current_user) do |f| %>
     <div class="flex  items-center">
       <p>目標</p>
@@ -16,6 +19,14 @@
     </div>
     <div class="ml-75 mt-10">
       <%= f.submit "設定", class: "btn btn-primary cursor-pointer rounded-lg border mt-1 py-2 px-4", style: "background-color: #F2EDED;" %>
+    </div>
+    <div class="flex w-900 mt-10 ml-10 pb-20">
+      <div class="text-[20px]">
+        <%= link_to "今までのこほうび", user_rewards_path(current_user.id) %>
+      </div>
+      <div class="text-[20px] ml-70">
+        <%= link_to "克服ポイントとは？", user_rewards_path(current_user.id) %>
+      </div>
     </div>
   <% end %>
 </div>

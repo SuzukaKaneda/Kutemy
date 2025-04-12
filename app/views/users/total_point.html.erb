@@ -1,12 +1,13 @@
+
 <div class="text-left ml-10 text-[20px] font-bold py-2">
   克服ポイントカード
 </div>
-<div class="flex justify-center mb-8">
-  <div class="rounded-lg border w-150 h-80 p-10 mt-10" style="background-color: #F2EDED;">
-    <div class=" text-[24px]">
+<div class="flex justify-center mb-3">
+  <div class="rounded-lg border w-150 h-60 p-8 mt-10" style="background-color: #F2EDED;">
+    <div class=" text-[20px]">
       <%= "#{@user.name} さん" %>
     </div>
-    <div class="flex ml-20 mt-10">
+    <div class="flex ml-20">
       <p class="text-[32px]">現在</p>
       <p class="text-[56px] font-bold  ml-15 mt-5"><%= @user.point %></p>
       <p class="text-[32px] ml-15 mt-15">ポイント</p>
@@ -14,35 +15,126 @@
   </div>
 </div>
 
-<%= form_with(url: user_add_point_path(@user), local: true) do |form| %>
-  <div class="flex justify-center items-center">
+<%= form_with(url: user_add_point_path(@user), local: true, html: { id: "add-point-form" }) do |form| %>
+  <div class="flex justify-center items-center ml-50">
     <%= label_tag :add, "加算するポイント数：" %>
     <%= number_field_tag :add, nil, min: 1, max: 3, placeholder: "0", class: "bg-gray-300 w-10 pl-1" %>
     <p class="ml-2">ポイント</p>
-    <%= submit_tag "加算", class: "rounded-lg border w-15 h-10  ml-5", style: "background-color: #F2EDED;" %>
+    <%= submit_tag "加算", class: "rounded-lg border w-15 h-7  ml-5", style: "background-color: #F2EDED;" %>
   </div>
 <% end %>
-<%= form_with(url: user_subtract_point_path(@user), local: true) do |form| %>
-  <div class="flex justify-center items-center mt-3">
+<%= form_with(url: user_subtract_point_path(@user), local: false, html: { id: "#subtract-point-form" }) do |form| %>
+  <div class="flex justify-center items-center mt-1 ml-50">
     <%= label_tag :subtract, "減算するポイント数：" %>
     <%= number_field_tag :subtract, nil, min: 1, max: 3, placeholder: "0", class: "bg-gray-300 w-10 pl-1" %>
     <p class="ml-2">ポイント</p>
-    <%= submit_tag "減算", class: "rounded-lg border w-15 h-10  ml-5", style: "background-color: #F2EDED;" %>
+    <%= submit_tag "減算", class: "rounded-lg border w-15 h-7  ml-5", style: "background-color: #F2EDED;" %>
   </div>
 <% end %>
 
-<div class="flex justify-center mt-10">
-  <div>
+<div class="flex justify-center mt-15">
+  <div class="rounded-lg border border-neutral-400 bg-neutral-100/70 p-2">
     <div class="flex items-end">
-      <span class="text-[24px]">目標： </span>
-      <span class="text-[28px] rounded-lg border px-3"  style="background-color: #F2EDED;"><%= "#{@reward.required_points}" %></span>
-      <span class="text-[24px] ml-2"> ポイント</span>
+      <span class="text-[20px]">目標： </span>
+      <span class="text-[24px]"><%= "#{@reward.required_points}" %></span>
+      <span class="text-[20px] ml-2"> ポイント</span>
     </div>
-    <div class="mt-5">
-      <p class="text-[24px]">ごほうび：</p>
-      <div class="w-150 rounded-lg w-150 border px-3"  style="background-color: #F2EDED;">
-        <span class="text-[28px]"><%= "#{@reward.content}" %></span>
+    <div class="mt-5 pb-2">
+      <p class="text-[20px]">ごほうび：</p>
+      <div class="w-150">
+        <span class="text-[24px]"><%= "#{@reward.content}" %></span>
       </div>
       </div>
   </div>
 </div>
+
+<div class="flex justify-center">
+  <div class="flex justify-between w-150  mt-10 pb-20">
+    <div class="text-[18px]">
+      <%= link_to "今までのこほうび", user_rewards_path(current_user.id) %>
+    </div>
+    <div class="text-[18px]">
+      <%= link_to "克服ポイントとは？", user_rewards_path(current_user.id) %>
+    </div>
+  </div>
+</div>
+
+<div id="goalAchievedModal" class="modal hidden fixed inset-0 flex items-center justify-center bg-gray-300/50">
+  <div class="modal-content bg-yellow-100 border-3 border-red-500 p-6 rounded-lg shadow-lg text-center max-w-md w-full">
+    <span class="close-button cursor-pointer text-2xl absolute top-4 right-4">&times;</span>
+    <h2 class="text-2xl font-bold">おめでとうございます！</h2>
+    <p>目標ポイントを達成しました。</p>
+    <p>ごほうびをあげてください。</p>
+    <p><%= "★#{@reward.content}★" %></p>
+  </div>
+</div>
+
+<script>
+document.addEventListener('turbo:load', () => {
+  const targetPoints = <%= @reward.required_points %>;
+  let userPoints = <%= @point %>;
+  let userId = <%= current_user.id %>;
+  let rewardId = <%= @reward.id %>;
+
+
+  function showModal() {
+    document.getElementById("goalAchievedModal").classList.remove("hidden");
+  }
+
+  document.querySelector(".close-button").addEventListener("click", function() {
+  document.getElementById("goalAchievedModal").classList.add("hidden");
+  // リワードモデルのcompletedカラムを更新するリクエストを送る
+  fetch(`/users/${userId}/rewards/${rewardId}/update_completed`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRFトークンの追加
+    },
+    body: JSON.stringify({ completed: true }) // completedをtrueに設定
+  })
+  .then(response => {
+    if (response.ok) {
+      // リダイレクト先のURLを指定
+      window.location.href = `/users/${userId}/rewards/new`;
+    } else {
+      console.error('Error updating reward');
+    }
+  })
+  .catch(error => console.error('Error:', error));
+});
+
+  // フォームの送信時にポイントを加算
+  document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // デフォルトのフォーム送信を防ぐ
+
+    // 送信ボタンを無効化
+    const submitButton = this.querySelector('input[type="submit"]');
+    submitButton.disabled = true;
+
+    const addPoints = parseInt(document.querySelector("input[name='add']").value, 10);
+    userPoints += addPoints; // ポイントを加算
+
+    // AJAXでサーバにポイントを加算するリクエストを送信
+    fetch(this.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(this)),
+        headers: {
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    }).then(response => {
+        if (response.ok) {
+            // サーバからのレスポンスを受けた後にポイントチェック
+            if (userPoints >= targetPoints) {
+                showModal(); // モーダルを表示
+            } else {
+                // リダイレクト処理
+                window.location.href = `/users/${userId}/point`; // リダイレクト先のURLを指定
+            }
+        }
+    }).finally(() => {
+        // 成功・失敗に関わらずボタンを再度有効化
+        submitButton.disabled = false;
+    });
+  });
+});
+</script>
