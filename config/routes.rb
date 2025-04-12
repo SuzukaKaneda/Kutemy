@@ -6,11 +6,11 @@ Rails.application.routes.draw do
     post "subtract_point" => "users#subtract_point"
 
     resources :rewards, only: %i[new create index] do
-    post "update_completed" =>"rewards#update_completed"
+    post "update_completed" => "rewards#update_completed"
     end
   end
 
-  
+  get "others/getting_ready" => "others#getting_ready"
 
   get "recipes/look" => "recipes#look"
   resources :recipes, only: %i[index new create show edit update destroy]
