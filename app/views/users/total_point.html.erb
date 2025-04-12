@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<%= form_with(url: user_add_point_path(@user), local: false, html: { id: "add-point-form" }) do |form| %>
+<%= form_with(url: user_add_point_path(@user), local: true, html: { id: "add-point-form" }) do |form| %>
   <div class="flex justify-center items-center ml-50">
     <%= label_tag :add, "加算するポイント数：" %>
     <%= number_field_tag :add, nil, min: 1, max: 3, placeholder: "0", class: "bg-gray-300 w-10 pl-1" %>
