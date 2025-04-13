@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   get "others/getting_ready" => "others#getting_ready"
+  get "others/point_explanation" => "others#point_explanation"
 
   get "recipes/look" => "recipes#look"
   resources :recipes, only: %i[index new create show edit update destroy]

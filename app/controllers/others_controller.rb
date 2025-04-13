@@ -3,5 +3,5 @@ class OthersController < ApplicationController
 
   def top; end
 
-
+  def point_explanation; end
 end

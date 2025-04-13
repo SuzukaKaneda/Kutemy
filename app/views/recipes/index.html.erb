@@ -30,7 +30,11 @@
 <% end %>
 </div>
 
-<div class="flex mt-8">
+<div class="ml-13 mt-8 underline">
+<%= link_to "克服ポイントとは？", others_point_explanation_path %>
+</div>
+
+<div class="flex">
   <div class="flex justify-center grid grid-cols-3 gap-5 w-230 ml-10">
     <% @recipes.each do |recipe| %>
       <%= render recipe %>
