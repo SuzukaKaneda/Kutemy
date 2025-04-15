@@ -41,3 +41,6 @@
 
 .DS_Store
 /vendor/bundle
+
+/config/initializer/cloudinary.rb
+/config/cloudinary.yml
