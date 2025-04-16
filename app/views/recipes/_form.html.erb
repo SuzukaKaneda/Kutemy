@@ -31,7 +31,7 @@
     </div>
     <div class="text-[20px] py-2 ml-40">
       <%= f.label :" ", style: "display: block;" %>
-      <%= f.text_field :title, style: "font-size: 24px; width: 500px; height: 60px; text-align: center;", placeholder: " 例）カレーライス", class: "mb-4 bg-gray-300" %>
+      <%= f.text_field :title, required: true, style: "font-size: 24px; width: 500px; height: 60px; text-align: center;", placeholder: " 例）カレーライス", class: "mb-4 bg-gray-300" %>
       <%= f.label :tag_id, " ", class: "hidden" %>
       <% if @recipe.tags.present? %>
         <%= f.collection_select :tag_id, Tag.all, :id, :name, { selected: @recipe.tags.pluck(:id) }, class: "mb-8 bg-gray-300 mt-10 text-gray-500", style: "font-size: 24px; width: 300px; height: 60px; text-align: center;" %>
