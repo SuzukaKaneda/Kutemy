@@ -6,26 +6,30 @@
 <span class="rounded-lg border py-1 px-2" style="background-color: #F2EDED;"><%= "#{@user.point}" %></span>
 <span>ポイントです。</span>
 
-<div class="ml-40 mt-15">
+<div class="mt-15">
   <%= form_with model: @reward, url: user_rewards_path(current_user) do |f| %>
-    <div class="flex  items-center">
+    <div class="flex items-center ml-15">
       <p>目標</p>
       <%= f.text_field :required_points, required: true, style: "font-size: 20px; width: 80px; height: 60px; text-align: center;", placeholder: "(例)15", class: "ml-5 mb-4 bg-gray-300" %>
       <p class="ml-5">ポイント</p>
     </div>
-    <div class="mt-10">
-      <p>ごほうび</p>
-      <%= f.text_area :content, required: true, style: "font-size: 18px; width: 700px; ", placeholder: "(例)好きなお店に連れていく。", class: "mb-4 bg-gray-300 p-2" %>
+    <div class="mt-10 flex justify-center">
+      <div class="w-2/3">
+        <p>ごほうび</p>
+        <%= f.text_area :content, required: true, style: "font-size: 18px; width: 100%;", placeholder: "(例)好きなお店に連れていく。", class: "mb-4 bg-gray-300 p-2" %>
+      </div>
     </div>
-    <div class="ml-75 mt-10">
+    <div class="flex justify-center mt-10">
       <%= f.submit "設定", class: "btn btn-primary cursor-pointer rounded-lg border mt-1 py-2 px-4", style: "background-color: #F2EDED;" %>
     </div>
-    <div class="flex w-900 mt-10 ml-10 pb-20">
-      <div class="text-[20px]">
-        <%= link_to "今までのこほうび", user_rewards_path(current_user.id) %>
-      </div>
-      <div class="text-[20px] ml-70">
-        <%= link_to "克服ポイントとは？", others_point_explanation_path %>
+    <div class="flex justify-center mt-10 pb-20">
+      <div class="flex justify-between">
+        <div class="text-[20px]">
+          <%= link_to "今までのこほうび", user_rewards_path(current_user.id) %>
+        </div>
+        <div class="text-[20px] ml-70">
+          <%= link_to "克服ポイントとは？", others_point_explanation_path %>
+        </div>
       </div>
     </div>
   <% end %>
