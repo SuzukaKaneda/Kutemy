@@ -20,7 +20,7 @@
   <div class="field text-[20px] mt-10">
     <%= f.label :password, class: "ml-60" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em><%= t('devise.registrations.password_length', length: @minimum_password_length) %></em>
     <% end %><br />
     <div class= "flex ml-70">
       <%= f.password_field :password, autocomplete: "new-password", class: "bg-gray-300 w-140 h-10 mt-3 p-2" %>

@@ -17,6 +17,7 @@ ja:
         last_sign_in_ip: 最終ログインIPアドレス
         locked_at: ロック時刻
         password: パスワード
+        characters minimum: 文字以上
         password_confirmation: パスワード（確認用）
         remember_created_at: ログイン記憶時刻
         remember_me: ログインを記憶する
@@ -86,6 +87,7 @@ ja:
       updated: パスワードが正しく変更されました。
       updated_not_active: パスワードが正しく変更されました。
     registrations:
+      password_length: "（%{length}文字以上）"
       destroyed: アカウントを削除しました。またのご利用をお待ちしております。
       edit:
         are_you_sure: 本当によろしいですか？

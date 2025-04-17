@@ -4,3 +4,7 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   opacity: 1;
 }
+.container {
+  width: 1200px; /* 固定幅を設定 */
+  margin: 0 auto; /* 中央配置 */
+}
