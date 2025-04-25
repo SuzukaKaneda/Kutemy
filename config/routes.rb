@@ -14,7 +14,13 @@ Rails.application.routes.draw do
   get "others/point_explanation" => "others#point_explanation"
 
   get "recipes/look" => "recipes#look"
-  resources :recipes, only: %i[index new create show edit update destroy]
+  resources :recipes, only: %i[index new create show edit update destroy] do
+    collection do
+      get :favorites
+    end
+  end
+  resources :favorites, only: %i[create destroy]
+  
   root "others#top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
