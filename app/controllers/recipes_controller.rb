@@ -81,6 +81,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  def favorites
+    @favorite_recipes = current_user.favorite_recipes.includes(:user).order(created_at: :desc)
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.
