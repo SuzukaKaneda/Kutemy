@@ -9,6 +9,11 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_recipes, through: :favorites, source: :recipe
   has_many :rewards,  dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  def own?(object)
+    id == object&.user_id
+  end
 
   def favorite(recipe)
     favorite_recipes << recipe
