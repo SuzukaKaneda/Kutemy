@@ -1,0 +1,7 @@
+<div class="row mb-3" id="comment-form">
+  <%= form_with model: comment, url: recipe_comments_path(recipe) do |f| %>
+    <%= f.label :content, class: "hidden" %>
+    <%= f.text_area :content, class: "mb-3", row: "4", placeholder: "コメント" %>
+    <%= f.submit "投稿", class: "btn btn-primary" %>
+  <% end %>
+</div>

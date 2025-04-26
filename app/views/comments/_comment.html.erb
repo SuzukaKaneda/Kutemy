@@ -1,0 +1,10 @@
+<tr id="comment-<%= comment.id %>">
+  <td>
+    <h3 class="text-[20px]"><%= comment.user.name %></h3>
+    <p><%= simple_format(comment.content) %></p>
+  </td>
+  <% if current_user.own?(comment) %>
+    <%= link_to "削除", comment_path, data: { turbo_method: :delete }, class: "delete-comment-link rounded-lg  bg-red-500 text-white px-4 my-2 mr-2", onclick: "confirm('本当に削除しますか？')" %>
+    <%= link_to "編集", edit_comment_path, class: "edit-comment-link rounded-lg bg-green-400 text-stone-700 px-4 my-2" %>
+  <% end %>
+</tr>
