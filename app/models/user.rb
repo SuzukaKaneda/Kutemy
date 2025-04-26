@@ -13,11 +13,11 @@ class User < ApplicationRecord
   def favorite(recipe)
     favorite_recipes << recipe
   end
-  
+
   def unfavorite(recipe)
     favorite_recipes.destroy(recipe)
   end
-  
+
   def favorite?(recipe)
     favorite_recipes.include?(recipe)
   end

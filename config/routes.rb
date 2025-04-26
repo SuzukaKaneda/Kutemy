@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
   resources :favorites, only: %i[create destroy]
-  
+
   root "others#top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
