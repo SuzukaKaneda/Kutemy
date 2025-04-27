@@ -1,5 +1,5 @@
-<div class="border-b border-gray-400 p-2 mb-6">
-  <tr id="comment-<%= comment.id %>">
+<div id="comment-<%= comment.id %>">
+  <div class="border-b border-gray-400 p-2 mb-6">
     <div>
       <div class="flex justify-between">
         <h3 class="text-[15px]">○<%= comment.user.name %></h3>
@@ -10,12 +10,12 @@
           <p class="text-[18px]"><%= simple_format(comment.content) %></p>
         </div>
         <div>
-          <% if current_user && current_user.id == @comment.user_id %>
-            <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete }, class: "delete-comment-link rounded-lg  bg-red-500 text-white px-4 my-2 mr-2", onclick: "confirm('本当に削除しますか？')" %>
+          <% if current_user && current_user.own?(comment) %>
+            <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "コメントを削除します。" }, class: "delete-comment-link rounded-lg  bg-red-500 text-white px-4 my-2 mr-2" %>
             <%= link_to "編集", edit_comment_path(comment), class: "edit-comment-link rounded-lg bg-green-400 text-stone-700 px-4 my-2" %>
           <% end %>
         </div>
       </div>
     </div>
-  </tr>
+  </div>
 </div>
