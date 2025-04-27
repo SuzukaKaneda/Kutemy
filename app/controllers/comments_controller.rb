@@ -7,7 +7,13 @@ class CommentsController < ApplicationController
         redirect_to recipe_path(comment.recipe), danger: "コメントを投稿できませんでした。"
       end
     end
-  
+
+    def destroy
+        @comment = current_user.comments.find(params[:id])
+        @comment.destroy!
+        redirect_to recipe_path(@comment.recipe)
+    end
+
     private
   
     def comment_params

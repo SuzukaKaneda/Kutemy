@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     collection do
       get :favorites
     end
-    resources :comments, only: %i[create edit destroy], shallow: true
+    resources :comments, only: %i[create edit update destroy], shallow: true
   end
   resources :favorites, only: %i[create destroy]
 
