@@ -9,6 +9,7 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :instructions, allow_destroy: true,  reject_if: lambda { |attributes| attributes["content"].blank? }
 
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_many :recipe_tags, dependent: :destroy
   has_many :tags, through: :recipe_tags

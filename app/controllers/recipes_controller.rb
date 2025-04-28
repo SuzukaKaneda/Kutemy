@@ -20,6 +20,8 @@ class RecipesController < ApplicationController
   # GET /recipes/1 or /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
+    @comment = Comment.new
+    @comments = @recipe.comments.includes(:user).order(created_at: :desc)
   end
 
   # GET /recipes/new
