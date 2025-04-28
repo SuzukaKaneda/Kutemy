@@ -10,8 +10,12 @@
   <h1 class="mb-10 ml-10 text-[20px] font-bold">○キーワードから探す</h1>
   <%= search_form_for @q, url: recipes_path do |f| %>
     <div class="flex ml-65 my-3">
-      <%= f.search_field :title_cont, placeholder: "レシピ名から検索", class: "rounded-lg w-130 h-10 p-2 border", style: "background-color: #F2EDED;" %>
-      <div class="ml-5">
+    <div data-controller="autocomplete" data-autocomplete-url-value="/recipes/search" role="combobox">
+      <%= f.search_field :title_cont, data: { autocomplete_target: 'input' }, placeholder: "レシピ名から検索", class: "rounded-lg w-130 h-10 p-2 border", style: "background-color: #F2EDED;" %>
+      <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
+      <div data-autocomplete-target="results" class="autocomplete-results"></div>
+    </div>
+    <div class="ml-5">
         <%= f.submit class: "btn btn-primary cursor-pointer rounded-lg border mt-1 py-1 px-3", style: "background-color: #F2EDED;" %>
       </div>
     </div>
