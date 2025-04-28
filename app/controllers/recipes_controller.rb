@@ -17,6 +17,11 @@ class RecipesController < ApplicationController
     @q = Recipe.ransack(params[:q])
   end
 
+  def search
+    @recipes = Recipe.where("title like ?", "%#{params[:q]}%")
+    render partial: "recipes/search", locals: { recipes: @recipes }
+  end
+
   # GET /recipes/1 or /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
