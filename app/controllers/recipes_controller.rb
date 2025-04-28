@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
 
   def search
     @recipes = Recipe.where("title like ?", "%#{params[:q]}%")
-    render partial: 'recipes/search', locals: { recipes: @recipes }
+    render partial: "recipes/search", locals: { recipes: @recipes }
   end
 
   # GET /recipes/1 or /recipes/1.json
