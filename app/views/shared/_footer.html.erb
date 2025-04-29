@@ -1,6 +1,13 @@
-<footer class="">
+<footer>
   <nav class="bg-green-300 h-28">
-    <%= link_to 'policy', page_path('policy') %>
-    <%= link_to 'terms', page_path('terms') %>
+    <div class="ml-10 pt-2">
+      <p class="font-semibold">○ご利用案内</p>
+      <div class="ml-5 my-3">
+        <ul class="list-disc list-outside">
+          <li><%= link_to "利用規約", page_path('terms') %></li>
+          <li><%= link_to "プライバシーポリシー", page_path('policy') %></li>
+        </ul>
+      </div>
+    </div>
   </nav>
 </footer>
