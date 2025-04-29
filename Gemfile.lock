@@ -146,6 +146,7 @@ GEM
     ffi (1.17.1-x86_64-linux-musl)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    high_voltage (4.0.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     image_processing (1.14.0)
@@ -384,6 +385,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
+  high_voltage
   jbuilder
   jsbundling-rails
   mini_magick
