@@ -4,37 +4,45 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field mt-5 text-[20px]">
-    <%= f.label :name, class: "ml-60" %><br />
-    <div class= "flex ml-70">
+    <div class= "flex justify-center mr-100">
+      <%= f.label :name %><br />
+    </div>
+    <div class= "flex justify-center">
       <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "bg-gray-300 w-140 h-10 mt-3 p-2" %>
     </div>
   </div>
 
   <div class="field text-[20px] mt-10">
-    <%= f.label :email, class: "ml-60" %><br />
-    <div class= "flex ml-70">
+    <div class= "flex justify-center mr-100">
+      <%= f.label :email %><br />
+    </div>
+    <div class= "flex justify-center">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gray-300 w-140 h-10 mt-3 p-2" %>
     </div>
   </div>
 
   <div class="field text-[20px] mt-10">
-    <%= f.label :password, class: "ml-60" %>
-    <% if @minimum_password_length %>
-    <em><%= t('devise.registrations.password_length', length: @minimum_password_length) %></em>
-    <% end %><br />
-    <div class= "flex ml-70">
+    <div class= "flex justify-center mr-80">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em><%= t('devise.registrations.password_length', length: @minimum_password_length) %></em>
+      <% end %><br />
+      </div>
+    <div class= "flex justify-center">
       <%= f.password_field :password, autocomplete: "new-password", class: "bg-gray-300 w-140 h-10 mt-3 p-2" %>
     </div>
   </div>
 
   <div class="field text-[20px] mt-10">
-    <%= f.label :password_confirmation, class: "ml-60" %><br />
-    <div class= "flex ml-70">
+    <div class= "flex justify-center mr-80">
+      <%= f.label :password_confirmation %><br />
+    </div>
+    <div class= "flex justify-center">
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "bg-gray-300 w-140 h-10 mt-3 p-2" %>
     </div>
   </div>
 
-  <div class="actions flex ml-128 mt-10 text-[20px]">
+  <div class="actions flex justify-center mt-10 text-[20px]">
     <%= f.submit "登録", class: "rounded-lg bg-green-300 py-1 px-5"%>
   </div>
 <% end %>
