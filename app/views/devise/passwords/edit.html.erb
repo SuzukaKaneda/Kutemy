@@ -1,25 +1,39 @@
-<h2>Change your password</h2>
+<div class="text-left ml-10 text-[20px] font-bold py-2">
+  <p>パスワード変更手続き</p>
+</div>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+  <div class="field mt-5 text-[20px]">
+    <div class= "flex justify-center mr-70">
+      <%= f.label :password, t('devise.passwords.edit.new_password') %>
+      <% if @minimum_password_length %>
+        <em><%= t('devise.passwords.edit.password_length', length: @minimum_password_length) %></em>
+      <% end %><br />
+    </div>
+    <div class= "flex justify-center">
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "bg-gray-300 w-140 h-10 mt-3 p-2" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field mt-5 text-[20px]">
+    <div class= "flex justify-center mr-110">
+      <%= f.label :password_confirmation, t('devise.passwords.edit.confirm_new_password') %><br />
+    </div>
+    <div class= "flex justify-center">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" , class: "bg-gray-300 w-140 h-10 mt-3 p-2" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+  <div class="actions flex justify-center mt-10">
+    <%= f.submit t('devise.passwords.edit.change_your_password'), class: "border rounded-lg px-3 py-1", style: "background-color: #F2EDED;" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="actions flex justify-center mt-10">
+  <%= link_to "ログイン画面へ", new_session_path(resource_name) %>
+  <span>／</span>
+  <%= link_to "アカウントの新規登録はこちら", new_registration_path(resource_name) %>
+</div>

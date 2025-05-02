@@ -75,8 +75,9 @@ ja:
     passwords:
       edit:
         change_my_password: パスワードを変更する
+        password_length: "（%{length}文字以上）"
         change_your_password: パスワードを変更
-        confirm_new_password: 確認用新しいパスワード
+        confirm_new_password: パスワード確認
         new_password: 新しいパスワード
       new:
         forgot_your_password: パスワードを忘れましたか？
