@@ -51,7 +51,7 @@ gem "ransack"
 
 gem "high_voltage"
 
-#パスワードリセット
+#パスワードリセット 
 gem "letter_opener_web"
 gem "dotenv-rails"
 

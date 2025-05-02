@@ -2,7 +2,7 @@ class Devise::Mailer < ApplicationMailer
     def reset_password_instructions(record, token, opts={})
       @token = token
       @resource = record
-  
+
       # メールの送信設定
       mail(
         to: @resource.email,
