@@ -37,3 +37,6 @@
  <span>／</span>
  <%= link_to "パスワードをお忘れの方はこちら", new_user_password_path %>
 </div>
+<%= link_to user_google_oauth2_omniauth_authorize_path, method: :get do %>
+  Googleアカウントでサインインする
+<% end %>
