@@ -1,16 +1,17 @@
 <div class="text-left ml-10 text-[20px] font-bold py-2">
   <p>パスワードをお忘れの方へ</p>
 </div>
+<p class="ml-10">登録しているメールアドレスを入力してください。</p>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field mt-5 text-[20px]">
     <div class= "flex justify-center mr-100">
-      <%= f.label :email %><br />
+      <%= f.label :email, class: "hidden" %><br />
     </div>
     <div class= "flex justify-center">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gray-300 w-140 h-10 mt-3 p-2" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gray-300 w-140 h-10 mt-3 p-2",  placeholder: "メールアドレス" %>
     </div>
   </div>
 

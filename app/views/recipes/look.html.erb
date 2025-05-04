@@ -7,7 +7,7 @@
 </div>
 
 <div class="pt-5">
-  <h1 class="mb-10 ml-10 text-[20px] font-bold">○キーワードから探す</h1>
+  <h1 class="mb-10 ml-10 text-[20px] font-bold text-neutral-600">○キーワードから探す</h1>
   <%= search_form_for @q, url: recipes_path do |f| %>
     <div class="flex ml-65 my-3">
     <div data-controller="autocomplete" data-autocomplete-url-value="/recipes/search" role="combobox">
@@ -23,7 +23,7 @@
 </div>
 
 <div class="ml-10 pt-10">
-  <h1 class="flex mb-10 text-[20px] font-bold">○苦手な食材から探す</h1>
+  <h1 class="flex mb-10 text-[20px] font-bold text-neutral-600">○苦手な食材から探す</h1>
   <div class="flex justify-center ml-15 mr-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
     <% @tags.each do |tag| %>
       <%= link_to(recipes_path(tag_id: tag.id)) do %>
