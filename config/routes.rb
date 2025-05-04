@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-  omniauth_callbacks: 'users/omniauth_callbacks'}
+  omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :users, only: %i[show edit update] do
     get "point" => "users#total_point"
