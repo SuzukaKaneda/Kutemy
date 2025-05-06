@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_03_122924) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_06_061215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,12 +52,19 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_03_122924) do
     t.index ["recipe_id"], name: "index_instructions_on_recipe_id"
   end
 
-  create_table "points", force: :cascade do |t|
-    t.bigint "user_id"
-    t.integer "add"
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "post_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_points_on_user_id"
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["post_id"], name: "index_notifications_on_post_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "recipe_tags", force: :cascade do |t|
@@ -121,7 +128,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_03_122924) do
   add_foreign_key "favorites", "users"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "instructions", "recipes"
-  add_foreign_key "points", "users"
   add_foreign_key "recipe_tags", "recipes"
   add_foreign_key "recipe_tags", "tags"
   add_foreign_key "recipes", "users"
