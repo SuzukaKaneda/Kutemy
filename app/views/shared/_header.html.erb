@@ -5,12 +5,30 @@
         さぁ、まずはひとくち
       </div>
       <div class="flex justify-end font-bold items-center space-x-8  mr-20"> 
-        <%= link_to(notifications_path)  do %>
-          <div class="flex flex-col items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22m7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A1 1 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a1 1 0 0 0-.293-.707z"/>
-            </svg>
-          </div>
+        <% if unchecked_notifications.any? %>
+          <%= link_to(notifications_path)  do %>
+            <div class="flex flex-col items-center">
+              <div style="position: relative; display: inline-block;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22m7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A1 1 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a1 1 0 0 0-.293-.707z"/>
+                </svg>
+                <svg class="h-4 w-4 text-red-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; top: 0; left: 16;">
+                <path stroke="none" d="M0 0h24v24H0z"/>  
+                <circle cx="12" cy="12" r="9" fill="currentColor" />
+                </svg>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to(notifications_path)  do %>
+            <div class="flex flex-col items-center">
+              <div style="position: relative; display: inline-block;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22m7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A1 1 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a1 1 0 0 0-.293-.707z"/>
+                </svg>
+              </div>
+            </div>
+          <% end %>
         <% end %>
         <div class="relative inline-block flex flex-col items-center">
           <div class="user_icon cursor-pointer">

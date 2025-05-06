@@ -1,8 +1,8 @@
 ja:
   datetime:
     distance_in_words:
-      x_seconds: "%{count}秒前"
-      x_minutes: "%{count}分前"
+      less_than_x_minutes: "1分未満"
+      x_minutes: "約%{count}分前"
       about_x_hours: "約%{count}時間前"
   activerecord:
     attributes:
