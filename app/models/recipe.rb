@@ -39,11 +39,11 @@ class Recipe < ApplicationRecord
     end
   end
 
-  def create_notification_comment!(current_user, comment_id, visited_id)
+  def create_notification_comment!(current_user, comment_id)
     notification = current_user.active_notifications.new(
       recipe_id: id,
       comment_id: comment_id,
-      visited_id: visited_id,
+      visited_id: user_id,
       action: 'comment'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
