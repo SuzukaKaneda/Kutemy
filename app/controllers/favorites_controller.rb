@@ -2,6 +2,7 @@ class FavoritesController < ApplicationController
   def create
     @recipe = Recipe.find(params[:recipe_id])
     current_user.favorite(@recipe)
+    @recipe.create_notification_favorite!(current_user)
   end
 
   def destroy

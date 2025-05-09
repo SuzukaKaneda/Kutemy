@@ -1,4 +1,13 @@
 ja:
+  datetime:
+    distance_in_words:
+      less_than_x_minutes: "1分未満"
+      x_minutes: "約%{count}分前"
+      about_x_hours: "約%{count}時間前"
+      x_days: "%{count}日前"
+      x_weeks: "%{count}週間前"
+      x_months: "%{count}ヶ月前"
+      x_years: "%{count}年前"
   activerecord:
     attributes:
       user:
