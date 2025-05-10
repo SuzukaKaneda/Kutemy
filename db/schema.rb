@@ -67,6 +67,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_06_061215) do
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
+  create_table "points", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "add"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_points_on_user_id"
+  end
+
   create_table "recipe_tags", force: :cascade do |t|
     t.bigint "recipe_id", null: false
     t.bigint "tag_id", null: false
@@ -128,6 +136,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_06_061215) do
   add_foreign_key "favorites", "users"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "instructions", "recipes"
+  add_foreign_key "points", "users"
   add_foreign_key "recipe_tags", "recipes"
   add_foreign_key "recipe_tags", "tags"
   add_foreign_key "recipes", "users"
