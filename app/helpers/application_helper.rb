@@ -22,12 +22,12 @@ module ApplicationHelper
       title:,
       description:,
       image:,
-      canonical: request.original_url,
+      canonical: "https://www.kutemy.com/",
       og: {
         type: 'website',
         title: title.presence || site,
         description:,
-        url: request.original_url,
+        url: "https://www.kutemy.com/",
         image:,
         site_name: site
       },
