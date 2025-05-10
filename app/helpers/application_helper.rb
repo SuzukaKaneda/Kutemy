@@ -9,7 +9,7 @@ module ApplicationHelper
     site: "Kutemy",
     title: "お子様の好き嫌いを克服するためのアプリ",
     description: "苦手な食材でも食べやすいレシピを探してみませんか？",
-    image: image_url('OGP_default.png')
+    image: image_url("OGP_default.png")
     }
     options.reverse_merge!(defaults)
     site = options[:site]
@@ -24,7 +24,7 @@ module ApplicationHelper
       image:,
       canonical: "https://www.kutemy.com/",
       og: {
-        type: 'website',
+        type: "website",
         title: title.presence || site,
         description:,
         url: "https://www.kutemy.com/",
@@ -33,7 +33,7 @@ module ApplicationHelper
       },
       twitter: {
         site:,
-        card: 'summary_large_image',
+        card: "summary_large_image",
         image:
       }
     }
