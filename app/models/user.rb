@@ -6,6 +6,9 @@ class User < ApplicationRecord
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
   validates :name, presence: true
+  validates :email, uniqueness: true, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
+
   has_many :recipes,  dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_recipes, through: :favorites, source: :recipe
