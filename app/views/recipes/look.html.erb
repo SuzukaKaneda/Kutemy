@@ -27,7 +27,7 @@
   <div class="flex justify-center ml-15 mr-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
     <% @tags.each do |tag| %>
       <%= link_to(recipes_path(tag_id: tag.id)) do %>
-        <div class="rounded-lg border w-50 h-20 flex items-center justify-center" style="background-image: url('<%= asset_path(tag.image_path) %>'); background-size: cover; background-color: rgba(255, 255, 255, 0.7); background-blend-mode: overlay;">
+        <div class="rounded-lg border w-50 h-20 flex items-center justify-center" style="background-image: url('<%= asset_path(tag.image_path || 'no_image.png') %>'); background-size: cover; background-color: rgba(255, 255, 255, 0.7); background-blend-mode: overlay;">
           <p class="text-[20px]"><%= "#{tag.name}" %></p>
         </div>
       <% end %>

@@ -42,6 +42,8 @@ RSpec.configure do |config|
     Rails.root.join('spec/fixtures')
   ]
 
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
   config.before(:each, type: :system) do
     driven_by :remote_chrome
     Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
