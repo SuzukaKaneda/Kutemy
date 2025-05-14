@@ -109,4 +109,17 @@ RSpec.describe "Users", type: :system do
       end
     end
   end
+  describe 'ログアウト動作確認' do
+    context 'ログイン状態でログアウトボタンを押す' do
+      it 'ログアウト成功' do
+        visit new_user_session_path
+        fill_in 'メールアドレス', with: user.email
+        fill_in 'パスワード', with: user.password
+        find('.manual_login').click
+        find('.user_icon').hover
+        click_on 'ログアウト'
+        expect(page).to have_content('ログアウトしました。')
+      end
+    end
+  end
 end

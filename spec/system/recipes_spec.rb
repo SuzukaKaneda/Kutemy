@@ -61,7 +61,7 @@ RSpec.describe "Recipes", type: :system do
         end
         context 'レシピの新規投稿をする' do
           it '新規作成成功' do
-            click_on '投稿する'
+            find('.post').click
             find('input.title', visible: true).set("料理名")
             find('input.point', visible: true).set(2)
             click_button '投稿'
