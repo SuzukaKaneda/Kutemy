@@ -3,6 +3,9 @@ class Recipe < ApplicationRecord
 
   belongs_to :user
 
+  validates :title, presence: true
+  validates :get_point, presence: true
+
   has_many :ingredients,  dependent: :destroy
   accepts_nested_attributes_for :ingredients, allow_destroy: true,  reject_if: lambda { |attributes| attributes["name"].blank? }
   has_many :instructions,  dependent: :destroy

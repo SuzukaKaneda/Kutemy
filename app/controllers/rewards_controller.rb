@@ -1,7 +1,7 @@
 class RewardsController < ApplicationController
-    def index
-        @rewards = Reward.where(user_id: current_user.id).order(created_at: :desc)
-    end
+  def index
+    @rewards = Reward.where(user_id: current_user.id).order(created_at: :desc)
+  end
 
   def new
     @user = User.find(current_user.id)
