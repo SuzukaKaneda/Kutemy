@@ -34,7 +34,8 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to user_point_path(@user)
     else
-      render :new
+      render :total_point
+      flash.now[:alert] = @user.errors.full_messages
     end
   end
 
@@ -44,7 +45,8 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to user_point_path(@user)
     else
-      render :new
+      render :total_point
+      flash.now[:alert] = @user.errors.full_messages.join(", ")
     end
   end
 
