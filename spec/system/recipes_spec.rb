@@ -44,7 +44,7 @@ RSpec.describe "Recipes", type: :system do
             expect(page).not_to have_content('美味しそう')
           end
         end
-      end 
+      end
     end
     describe 'ログイン後' do
       before do
@@ -65,7 +65,7 @@ RSpec.describe "Recipes", type: :system do
             find('input.title', visible: true).set("料理名")
             find('input.point', visible: true).set(2)
             click_button '投稿'
-            expect(page).to have_content('レシピを作成しました。', wait: 10) 
+            expect(page).to have_content('レシピを作成しました。', wait: 10)
           end
         end
         context 'レシピにいいねする' do
@@ -82,8 +82,8 @@ RSpec.describe "Recipes", type: :system do
             click_on recipe.title
             fill_in 'コメントを送ろう！', with: '美味しそう'
             click_on '投稿'
-            expect(page).to have_content('美味しそう') 
-            expect(page).to have_content('編集') 
+            expect(page).to have_content('美味しそう')
+            expect(page).to have_content('編集')
           end
         end
       end

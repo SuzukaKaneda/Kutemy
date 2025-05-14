@@ -11,7 +11,7 @@ RSpec.describe Recipe, type: :model do
       end
       it 'titleがない場合にバリデーションが機能してinvalidになるか' do
         user = User.create(name: "name1", email: "user@example.com", encrypted_password: "password")
-        recipe = user.recipes.new( title: nil, get_point: "2")
+        recipe = user.recipes.new(title: nil, get_point: "2")
         expect(recipe).to be_invalid
       end
       it 'get_pointがない場合にバリデーションが機能してinvalidになるか' do
