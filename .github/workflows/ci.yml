@@ -72,11 +72,7 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-
-      - name: Prepare test database
-      run: |
-        psql -U postgres -c "CREATE DATABASE test_db;"
-        bin/rails db:test:prepare
+          
 
       - name: Run tests
         env:
