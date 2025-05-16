@@ -2,9 +2,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV["DATABASE_HOST"] %> # render.comのデータベースホスト
-  username: <%= ENV["DATABASE_USERNAME"] %> # render.comのユーザー名
-  password: <%= ENV["DATABASE_PASSWORD"] %> # render.comのパスワード
+  host: db
+  username: postgres
+  password: password
 
 development:
   <<: *default
@@ -12,10 +12,10 @@ development:
 
 test:
   <<: *default
-  database: myapp_ci_test # CI用のデータベース名
+  database: myapp_test
 
 production:
   <<: *default
   database: myapp_production
-  username: <%= ENV["DATABASE_USERNAME"] %>
+  username: myapp
   password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
