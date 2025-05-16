@@ -11,9 +11,13 @@ development:
   database: myapp_development
 
 test:
-  <<: *default
-  database: myapp_test
-  url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: kutemy_test
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5432
 
 production:
   <<: *default
