@@ -13,10 +13,10 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: kutemy_test
-  username: postgres
+  database: kutemy_db
+  username: kutemy_db_user
   password: postgres
-  host: localhost
+  host: dpg-cv6obarqf0us73f4pvn0-a
   port: 5432
 
 production:
