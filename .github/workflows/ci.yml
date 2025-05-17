@@ -19,10 +19,6 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Set RAILS_MASTER_KEY
-        env:
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-
       - name: Upgrade Brakeman
         run: |
           bundle update brakeman
