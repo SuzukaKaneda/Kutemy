@@ -53,7 +53,7 @@
         <%= f.fields_for :ingredients do |ingredient_fields| %>
           <div class="ingredient flex items-center mb-3">
             <%= ingredient_fields.hidden_field :_destroy %>
-            <%= ingredient_fields.text_field :name, placeholder: " 例）にんじん", class: "bg-gray-300 w-60" %>
+            <%= ingredient_fields.text_field :name, placeholder: " 例）にんじん", class: "bg-gray-300 p-1 w-60" %>
             <%= ingredient_fields.text_field :quantity, placeholder: "例）1本", class: "bg-gray-300 ml-5 w-18" %>
             <input type="button" value="削除" class="ml-2" onclick="deleteRow(this)">
           </div>
@@ -84,7 +84,7 @@
   <div class="ml-170 mt-10">
     <p>【コツ・工夫点】</p>
     <%= f.label :" ", style: "display: block" %>
-    <%= f.text_area :trick, style: "font-size: 14px; width: 500px; height: 60px; text-align: start; word-wrap: break-word;", placeholder: " 例）野菜がしんなりするまでよく炒める。歯応えが少なくなり食べやすくなります。", class: "h-48 bg-gray-300" %>
+    <%= f.text_area :trick, style: "font-size: 14px; width: 500px; height: 60px; text-align: start; word-wrap: break-word;", placeholder: " 例）野菜がしんなりするまでよく炒める。歯応えが少なくなり食べやすくなります。", class: "h-48 bg-gray-300 p-1" %>
   </div>
 <% end %>
 
