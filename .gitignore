@@ -44,3 +44,5 @@
 
 /config/initializer/cloudinary.rb
 /config/cloudinary.yml
+
+/config/credentials/test.key

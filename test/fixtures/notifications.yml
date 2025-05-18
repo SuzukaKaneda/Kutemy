@@ -4,8 +4,12 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+notification_one:
+  visitor: users(:alice)   # visitorとしてAliceを指定
+  visited: users(:bob)     # visitedとしてBobを指定
+  comment: comments(:comment_one) # もしcommentが関連しているなら指定
+
+notification_two:
+  visitor: users(:alice)   # visitorとしてAliceを指定
+  visited: users(:bob)
+  recipe: recipes(:recipe_one) 
