@@ -1,7 +1,16 @@
 require "test_helper"
 
 class RecipesControllerTest < ActionDispatch::IntegrationTest
+  fixtures :users
+  test "should create recipe for user" do
+    user = users(:one)  # users.ymlで定義したoneを呼び出す
+    # userがちゃんと呼び出せているか確認するために、以下のように使う
+    assert_equal "Alice", user.name
+  end
+
   setup do
+    @user = users(:one) # ユーザーのフィクスチャを使う場合
+    sign_in @user
     @recipe = recipes(:one)
   end
 
@@ -17,7 +26,7 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create recipe" do
     assert_difference("Recipe.count") do
-      post recipes_url, params: { recipe: { title: @recipe.title } }
+      post recipes_url, params: { recipe: { title: @recipe.title, get_point: @recipe.get_point } }
     end
 
     assert_redirected_to recipe_url(Recipe.last)

@@ -3,9 +3,9 @@
 one:
   required_points: 1
   content: MyText
-  user: one
+  user_id: 1
 
 two:
   required_points: 1
   content: MyText
-  user: two
+  user_id: 2
