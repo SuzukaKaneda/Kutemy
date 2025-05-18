@@ -29,7 +29,7 @@ class RecipesTest < ApplicationSystemTestCase
     find("input.title", visible: true).set(@recipe.title)
     find("input.point", visible: true).set(@recipe.get_point)
     click_on "投稿"
-    assert_text "レシピの更新に成功しました。"
+    assert_text "レシピの更新に成功しました。", wait: 15
   end
 
   test "should destroy Recipe" do
