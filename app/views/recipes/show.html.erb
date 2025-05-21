@@ -13,7 +13,7 @@
 
 <% content_for :title, "Showing recipe" %>
 
-<div class="text-left ml-10 text-[20px] font-bold py-2">
+<div class="text-left text-[20px] font-bold py-2">
   レシピ詳細
 </div>
 
@@ -29,7 +29,7 @@
   </div>
 
   <div class="flex">
-    <div class="ml-10 py-2 mr-50">
+    <div class="py-2 mr-50">
       <%= cl_image_tag(@recipe.image.url(:show_size)) %>
     </div>
     <div class="py-2">
@@ -56,7 +56,7 @@
   </div>
   
   <div class="flex">
-    <div class="ml-20">
+    <div class="ml-10">
       <div class="text-[20px] mb-3 mt-3 w-[350px]">
        【材料】
       </div>

@@ -7,24 +7,24 @@
 </div>
 
 <div class="pt-5">
-  <h1 class="mb-10 ml-10 text-[20px] font-bold text-neutral-600">○キーワードから探す</h1>
+  <h1 class="mb-10 text-[20px] font-bold text-neutral-600">○キーワードから探す</h1>
   <%= search_form_for @q, url: recipes_path do |f| %>
-    <div class="flex ml-65 my-3">
-    <div data-controller="autocomplete" data-autocomplete-url-value="/recipes/search" role="combobox">
-      <%= f.search_field :title_cont, data: { autocomplete_target: 'input' }, placeholder: "レシピ名から検索", class: "rounded-lg w-130 h-10 p-2 border", style: "background-color: #F2EDED;" %>
-      <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
-      <div data-autocomplete-target="results" class="autocomplete-results"></div>
-    </div>
-    <div class="ml-5">
+    <div class="flex ml-2 md:ml-55 my-3">
+      <div data-controller="autocomplete" data-autocomplete-url-value="/recipes/search" role="combobox">
+        <%= f.search_field :title_cont, data: { autocomplete_target: 'input' }, placeholder: "レシピ名から検索", class: "rounded-lg w-130 h-10 p-2 border", style: "background-color: #F2EDED;" %>
+        <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
+        <div data-autocomplete-target="results" class="autocomplete-results"></div>
+      </div>
+      <div class="ml-5">
         <%= f.submit class: "btn btn-primary cursor-pointer rounded-lg border mt-1 py-1 px-3", style: "background-color: #F2EDED;" %>
       </div>
     </div>
   <% end %>
 </div>
 
-<div class="ml-10 pt-10">
+<div class="pt-10">
   <h1 class="flex mb-10 text-[20px] font-bold text-neutral-600">○苦手な食材から探す</h1>
-  <div class="flex justify-center ml-15 mr-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+  <div class="flex justify-center ml-5 mr-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
     <% @tags.each do |tag| %>
       <%= link_to(recipes_path(tag_id: tag.id)) do %>
         <div class="rounded-lg border w-50 h-20 flex items-center justify-center" style="background-image: url('<%= asset_path(tag.image_path || 'no_image.png') %>'); background-size: cover; background-color: rgba(255, 255, 255, 0.7); background-blend-mode: overlay;">

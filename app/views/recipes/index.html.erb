@@ -1,10 +1,10 @@
 <% content_for :title, "Recipes" %>
 
 <div class="flex justify-between">
-  <div class="text-left ml-10 text-[20px] font-bold py-2">
+  <div class="text-left text-[16px] sm:text-[20px] font-bold py-2">
     レシピ一覧
   </div>
-  <div class="flex justify-end pt-4 mr-10">
+  <div class="flex justify-end pt-4 mr-10 text-[12px] sm:text-[20px]">
     <% if user_signed_in? %>
       <%= "こんにちは、#{current_user.name}さん" %>
     <% else %>
@@ -14,19 +14,19 @@
 </div>
 
 <%= search_form_for @q, url: recipes_path do |f| %>
-  <div class="flex ml-10">
-  <div data-controller="autocomplete" data-autocomplete-url-value="/recipes/search" role="combobox">
-    <%= f.search_field :title_cont, data: { autocomplete_target: 'input' }, placeholder: "レシピ名から検索", class: "w-130 h-10 p-2 border rounded-lg", style: "background-color: #F2EDED;" %>
-    <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
-    <div data-autocomplete-target="results" class="autocomplete-results"></div>
-  </div>
-  <div class="ml-5">
-    <%= f.submit class: "btn btn-primary cursor-pointer rounded-lg border mt-1 py-1 px-3", style: "background-color: #F2EDED;" %>
-  </div>
+  <div class="flex">
+    <div data-controller="autocomplete" data-autocomplete-url-value="/recipes/search" role="combobox">
+      <%= f.search_field :title_cont, data: { autocomplete_target: 'input' }, placeholder: "レシピ名から検索", class: "w-70 sm:w-130 text-[14px] sm:text-[18px] p-1 sm:p-2 border rounded-lg", style: "background-color: #F2EDED;" %>
+      <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
+     <div data-autocomplete-target="results" class="autocomplete-results"></div>
+    </div>
+    <div class="ml-5">
+      <%= f.submit class: "btn btn-primary text-[12px] sm:text-[18px] cursor-pointer rounded-lg border sm:mt-1 py-1 px-3", style: "background-color: #F2EDED;" %>
+    </div>
   </div>
 <% end %>
 
-<div class="ml-10 mt-5 text-[18px]">
+<div class="mt-1 sm:mt-5 text-[12px] sm:text-[18px]">
 <% if @recipes.present? %>
   <%= "検索結果：#{@recipes.count}件" %>
 <% else %>
@@ -34,17 +34,17 @@
 <% end %>
 </div>
 
-<div class="ml-13 mt-8 underline">
+<div class="ml-3 mt-1 sm:mt-3 sm:mt-8 underline text-[12px] sm:text-[18px]">
 <%= link_to "克服ポイントとは？", others_point_explanation_path %>
 </div>
 
 <div class="flex">
-  <div class="flex justify-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-230 ml-10">
+  <div class="flex justify-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-8 w-230 mb-3">
     <% @recipes.each do |recipe| %>
       <%= render recipe %>
     <% end %>
   </div>
-  <div class="mt-65 w-90 ml-10">
+  <div class="mt-65 w-90 ml-10 hidden sm:block">
     <h1 class="mb-5">他の食材から探す</h1>
     <ul class="ml-4">
       <% @tags.each do |tag| %>
