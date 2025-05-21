@@ -26,7 +26,7 @@
   </div>
 <% end %>
 
-<div class="mt-1 sm:mt-5 text-[12px] sm:text-[18px]">
+<div class="mt-2 sm:mt-5 text-[12px] sm:text-[18px]">
 <% if @recipes.present? %>
   <%= "検索結果：#{@recipes.count}件" %>
 <% else %>
@@ -39,7 +39,7 @@
 </div>
 
 <div class="flex">
-  <div class="flex justify-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-8 w-230 mb-3">
+  <div class="flex justify-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-8 w-230 mb-3">
     <% @recipes.each do |recipe| %>
       <%= render recipe %>
     <% end %>
