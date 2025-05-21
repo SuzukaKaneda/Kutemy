@@ -1,18 +1,18 @@
 <header>
   <nav class="bg-green-300">
     <div class="flex justify-between">
-      <div class="text-[16px] font-normal text-left ml-10 pt-4">
+      <div class="text-[12px] sm:text-[16px] font-normal text-left ml-2 md:ml-10 pt-4">
         さぁ、まずはひとくち
       </div>
-      <div class="flex justify-end font-bold items-center space-x-8  mr-20"> 
+      <div class="flex justify-end font-bold items-center space-x-2 sm:space-x-8 mr-5 sm:mr-20"> 
         <% if unchecked_notifications.any? %>
           <%= link_to(notifications_path)  do %>
             <div class="flex flex-col items-center">
               <div style="position: relative; display: inline-block;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-8 sm:h-8" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22m7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A1 1 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a1 1 0 0 0-.293-.707z"/>
                 </svg>
-                <svg class="h-4 w-4 text-red-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; top: 0; left: 16;">
+                <svg class="h-3 w-3 sm:h-4 sm:w-4 text-red-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; top: 0; left: 16;">
                 <path stroke="none" d="M0 0h24v24H0z"/>  
                 <circle cx="12" cy="12" r="9" fill="currentColor" />
                 </svg>
@@ -23,7 +23,7 @@
           <%= link_to(notifications_path)  do %>
             <div class="flex flex-col items-center">
               <div style="position: relative; display: inline-block;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-8 sm:h-8" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22m7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A1 1 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a1 1 0 0 0-.293-.707z"/>
                 </svg>
               </div>
@@ -32,11 +32,11 @@
         <% end %>
         <div class="relative inline-block flex flex-col items-center">
           <div class="user_icon cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-9 sm:h-9" viewBox="0 0 24 24">
             <path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20z"/>
             </svg>
           </div>
-          <div class="user_menu absolute hidden bg-white border border-gray-300 mt-1 w-40 shadow-lg">
+          <div class="user_menu absolute hidden bg-white border border-gray-300 w-40 shadow-lg right-5 top-5">
             <ul>
               <%= link_to "アカウント詳細", user_path(current_user.id), class: "block px-4 py-2 hover:bg-gray-100" %>
               <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-4 py-2 hover:bg-gray-100" %>

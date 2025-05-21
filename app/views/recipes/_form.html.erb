@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="flex ml-210 whitespace-nowrap">
+  <div class="flex ml-200 whitespace-nowrap">
     <div class="pt-2">
       <%= link_to "レシピ一覧へ", recipes_path, onclick: "if (confirm('内容を破棄して戻ります')) { window.location.href = '#{recipes_path}'; } return false;" %>
     </div>
@@ -20,7 +20,7 @@
   </div>
 
   <div class="flex">
-    <div class="ml-10 text-[15px] py-2">
+    <div class="text-[15px] py-2">
       <%= f.label :" ", style: "display: block;" %>
       <%= f.file_field :image,  id: 'image_input', style: "display: none;" %>
       <%= f.hidden_field :image_cache %>
@@ -29,7 +29,7 @@
       </label>
       <img id="image_preview" src="<%= @recipe.image.url %>" alt="Image Preview" style="display: block; width: 400px; height: auto" />
     </div>
-    <div class="text-[20px] py-2 ml-40">
+    <div class="text-[20px] py-2 ml-30">
       <%= f.label :" ", style: "display: block;" %>
       <%= f.text_field :title, required: true, style: "font-size: 24px; width: 500px; height: 60px; text-align: center;", placeholder: " 例）カレーライス", class: "title mb-4 bg-gray-300" %></br>
       <%= f.label :tag_id, " ", class: "hidden" %>
@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="flex">
-    <div class="mt-5 ml-10">
+    <div class="mt-5 w-90">
       <div id="ingredients">
         <div class="text-[20px] mb-5">
          【材料】
@@ -61,7 +61,7 @@
       </div>
       <button id="add-ingredient" type="button">＋材料を追加</button>
     </div>
-    <div class="mt-5 ml-40">
+    <div class="mt-5 ml-50">
       <div class="text-[20px] mb-5">
       【手順】
       </div>
@@ -76,12 +76,12 @@
           </div>
         <% end %>
       </div>
-      <div class="ml-65">
+      <div class="ml-55">
         <button id="add-instruction" type="button">＋手順を追加</button>
       </div>
     </div>
   </div>
-  <div class="ml-170 mt-10">
+  <div class="ml-160 mt-10">
     <p>【コツ・工夫点】</p>
     <%= f.label :" ", style: "display: block" %>
     <%= f.text_area :trick, style: "font-size: 14px; width: 500px; height: 60px; text-align: start; word-wrap: break-word;", placeholder: " 例）野菜がしんなりするまでよく炒める。歯応えが少なくなり食べやすくなります。", class: "h-48 bg-gray-300 p-1" %>

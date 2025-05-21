@@ -1,8 +1,8 @@
-<div class="text-left ml-10 text-[20px] font-bold py-2">
+<div class="text-left text-[20px] font-bold py-2">
   <p>通知一覧</p>
 </div>
 
-<div class="ml-10 mt-5">
+<div class="mt-5">
   <% if @notifications.exists? %>
     <% @notifications.each do |notification| %>
       <%= render notification %>

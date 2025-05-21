@@ -1,8 +1,8 @@
-<h2 class="ml-10 text-[25px]">アカウント詳細</h2>
-<div class="field mt-5 text-[20px] ml-60">
+<h2 class="text-[25px]">アカウント詳細</h2>
+<div class="field mt-5 text-[20px] ml-50">
   <span>アカウント名：</span>
   <div class="flex">
-    <div class= "ml-10 rounded-lg border w-140 h-12 mt-4 p-2"  style="background-color: #F2EDED;">
+    <div class= " rounded-lg border w-140 h-12 mt-4 p-2"  style="background-color: #F2EDED;">
       <div class="text-[18px] text-left ml-5">
         <%= @user.name %>
       </div>
@@ -12,14 +12,14 @@
     </div>
   </div>
 </div>
-<div class="field mt-15 text-[20px] ml-60">
+<div class="field mt-15 text-[20px] ml-50">
   <span>メールアドレス：</span>
-  <div class= "ml-10 rounded-lg border w-140 h-12 mt-4 p-2"  style="background-color: #F2EDED;">
+  <div class= "rounded-lg border w-140 h-12 mt-4 p-2"  style="background-color: #F2EDED;">
     <div class="text-[18px] text-left ml-5">
       <%= @user.email %>
     </div>
   </div>
 </div>
-<div class="ml-200 mt-10 ">
-  <%= link_to "レシピ一覧へ", recipes_path %>
+<div class="ml-190 mt-10">
+  <%= link_to "レシピ一覧へ", recipes_path, class:"border-b" %>
 </div>
