@@ -1,0 +1,24 @@
+<div class="flex justify-between">
+  <div class="text-left ml-10 pt-3">
+    <p class="font-bold text-3xl md:text-4xl lg:text-5xl">Kutemy</p>
+  </div>
+  <div class="humberger flex justify-end mr-10 py-1">
+    <button class="humberger_icon cursor-pointer items-center space-x-8 h-[70px]" onclick="toggleMenu()">
+      <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+      <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/>
+      </svg>                       
+    </button>
+  </div>
+</div>
+<div id="humbergerMenu" class="humberger_menu hidden mx-10 mt-1 py-4">
+  <ul>
+    <%= link_to "レシピを探す",recipes_look_path, class: "border-b block px-4 py-2 hover:bg-green-400" %>
+    <%= link_to "いいねレシピ",favorites_recipes_path, class: "border-b block px-4 py-2 hover:bg-green-400" %>
+    <%= link_to "投稿する",new_recipe_path, class: "border-b block px-4 py-2 hover:bg-green-400" %>
+    <% if current_user.rewards.where(completed: false).present? %>
+      <%= link_to "克服ポイント",user_point_path(current_user.id), class: "block px-4 py-2 hover:bg-green-400" %>
+    <% else %>
+      <%= link_to "克服ポイント",new_user_reward_path(current_user.id), class: "block px-4 py-2 hover:bbg-green-400" %>
+    <% end %>
+  </ul>
+</div>
