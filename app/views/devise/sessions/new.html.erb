@@ -32,7 +32,7 @@
   </div>
 <% end %>
 
-<p class="text-[12px] sm:text-[18px] sm:text-center  font-bold text-neutral-500 sm:mr-100 mt-10">○SNSでログイン</p>
+<p class="text-[12px] sm:text-[18px] sm:text-center font-bold text-neutral-500 sm:mr-100 mt-10">○SNSでログイン</p>
 <div class="flex justify-center mt-5">
   <%= link_to(user_google_oauth2_omniauth_authorize_path)  do %>
     <div class="flex items-center border bg-white rounded-full px-5 py-2">
@@ -49,6 +49,6 @@
   <% end %>
 </div>
 
-<div class="actions flex justify-center underline mt-10 sm:mt-25 text-[12px] sm:text-[18px]">
+<div class="actions flex justify-center underline mt-10 sm:mt-15 text-[12px] sm:text-[18px]">
   <%= link_to "アカウントの新規登録はこちら", new_registration_path(resource_name) %>
 </div>
