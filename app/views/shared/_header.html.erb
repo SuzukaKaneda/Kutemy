@@ -46,7 +46,12 @@
       </div>
     </div>
     <hr class="border-t-2 border-white mt-2" style="border-color: white;" /> <!-- マージンを調整 -->
-    <div id="header-icon-container"></div>
+    <div class="block md:hidden">
+      <%= render 'shared/header_humberger' %>
+    </div>
+    <div class="hidden md:block">
+      <%= render 'shared/header_icon' %>
+    </div>
   </nav>
 </header>
 
@@ -71,21 +76,6 @@ user_menu.addEventListener('mouseenter', () => {
 user_menu.addEventListener('mouseleave', () => {
   user_menu.classList.add('hidden'); // メニューを非表示
 });
-});
-
-document.addEventListener('turbo:load', () => {
-  const iconContainer = document.getElementById('header-icon-container');
-
-  function updateIcon() {
-    if (window.innerWidth <= 800) {
-      iconContainer.innerHTML = '<%= j render 'shared/header_humberger' %>';
-    } else {
-      iconContainer.innerHTML = '<%= j render 'shared/header_icon' %>';
-    }
-  }
-
-  updateIcon(); // 初回表示
-  window.addEventListener('resize', updateIcon); // リサイズ時に再チェック
 });
 
 function toggleMenu(button) {

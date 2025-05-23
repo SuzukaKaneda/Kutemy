@@ -9,26 +9,16 @@
       </div>
     </div>
     <hr class="border-t-2 border-white mt-2" style="border-color: white;" /> <!-- マージンを調整 -->
-    <div id="header-icon-container"></div>
+    <div class="block md:hidden">
+      <%= render 'shared/before_login_header_humberger' %>
+    </div>
+    <div class="hidden md:block">
+      <%= render 'shared/before_login_header_icon' %>
+    </div>
   </nav>
 </header>
 
 <script>
-document.addEventListener('turbo:load', () => {
-  const iconContainer = document.getElementById('header-icon-container');
-
-  function updateIcon() {
-    if (window.innerWidth <= 800) {
-      iconContainer.innerHTML = '<%= j render 'shared/before_login_header_humberger' %>';
-    } else {
-      iconContainer.innerHTML = '<%= j render 'shared/before_login_header_icon' %>';
-    }
-  }
-
-  updateIcon(); // 初回表示
-  window.addEventListener('resize', updateIcon); // リサイズ時に再チェック
-});
-
 function toggleMenu(button) {
     const menu = document.getElementById('humbergerMenu');
     menu.classList.toggle('hidden');
