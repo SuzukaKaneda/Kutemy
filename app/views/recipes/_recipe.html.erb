@@ -9,10 +9,10 @@
           <%= "#{recipe.title}" %>
         </div>
         <div class="flex justify-between w-50">
-          <div class="flex ml-3">
+          <div class="flex">
             <%= render 'favorite_buttons', recipe:recipe %>
           </div>
-          <div class="text-[15px] mt-1 mr-3">
+          <div class="text-[16px] mt-1 mr-3">
             <p><%= "克服ポイント：""#{recipe.get_point}" %></p>
           </div>
         </div>

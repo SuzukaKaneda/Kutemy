@@ -15,7 +15,11 @@
     <div class="pt-2">
       <%= link_to "レシピ一覧へ", recipes_path, onclick: "if (confirm('内容を破棄して戻ります')) { window.location.href = '#{recipes_path}'; } return false;" %>
     </div>
-    <%= link_to "リセット", new_recipe_path, class: "rounded-lg bg-red-500 text-white px-4 my-2 ml-6", onclick: "if (confirm('入力内容をリセットします')) { window.location.href = '#{new_recipe_path}'; } return false;" %>
+    <% if @recipe && @recipe.id %>
+      <%= link_to "リセット", edit_recipe_path(@recipe.id), class: "rounded-lg bg-red-500 text-white px-4 my-2 ml-6", onclick: "if (confirm('入力内容をリセットします')) { window.location.href = '#{edit_recipe_path(@recipe.id)}'; } return false;" %>
+    <% else %>
+      <%= link_to "リセット", new_recipe_path, class: "rounded-lg bg-red-500 text-white px-4 my-2 ml-6", onclick: "if (confirm('入力内容をリセットします')) { window.location.href = '#{new_recipe_path}'; } return false;" %>
+    <% end %>
     <%= f.submit "投稿", class: "rounded-lg bg-green-400 text-stone-700 px-4 my-2 ml-2" %>
   </div>
 

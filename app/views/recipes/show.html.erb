@@ -13,86 +13,86 @@
 
 <% content_for :title, "Showing recipe" %>
 
-<div class="text-left text-[20px] font-bold py-2">
+<div class="text-left text-[16px] sm:text-[20px] font-bold py-2">
   レシピ詳細
 </div>
 
 <div>
-  <div class="flex justify-end mr-10 mb-4">
-    <div class="mr-10 pt-3">
+  <div class="flex justify-end mr-5 md:mr-10 md:mb-4">
+    <div class="sm:mr-10 pt-3">
       <%= link_to "レシピ検索画面へ", recipes_look_path %>
     </div>
     <% if current_user && current_user.own?(@recipe) %>
-      <%= link_to "削除", recipe_path(@recipe), data: { turbo_method: :delete }, class: "rounded-lg  bg-red-500 text-white px-4 my-2 mr-2", onclick: "confirm('本当に削除しますか？')" %>
+      <%= link_to "削除", recipe_path(@recipe), data: { turbo_method: :delete }, class: "rounded-lg bg-red-500 text-white px-4 my-2 mr-2", onclick: "if (!confirm('本当に削除しますか？')) { return false; }" %>
       <%= link_to "編集", edit_recipe_path(@recipe), class: "rounded-lg bg-green-400 text-stone-700 px-4 my-2" %> 
     <% end %>
   </div>
 
-  <div class="flex">
-    <div class="py-2 mr-50">
+  <div class="md:flex">
+    <div class="py-2 sm:mr-50">
       <%= cl_image_tag(@recipe.image.url(:show_size)) %>
     </div>
     <div class="py-2">
-      <div class="text-[50px]">
+      <div class="text-[25px] sm:text-[50px]">
        <%= @recipe.title %>
       </div>
-      <div class=" flex rounded-lg w-90 border mt-3 p-1" style="background-color: #F2EDED;"> <!-- 丸みを帯びた四角 -->
-        <h2 class="text-[15px] ml-2">苦手な食材:</h2> <!-- タイトル -->
+      <div class="flex rounded-lg w-full sm:w-90 border mt-3 p-1" style="background-color: #F2EDED;">
+        <h2 class="text-[12px] sm:text-[15px] ml-2">苦手な食材:</h2> <!-- タイトル -->
         <% @recipe.tags.each do |tag| %>
-          <span class="text-[25px] ml-10"><%= tag.name %></span>
+          <span class="text-[15px] sm:text-[25px] ml-20 sm:ml-10"><%= tag.name %></span>
         <% end %>
       </div>
-      <div class="flex mt-30">
+      <div class="flex mt-3 md:mt-30">
         <div class="flex">
           <div>
             <%= render 'favorite_buttons', recipe:@recipe %>
           </div>
         </div>
-        <div class="text-[20px] ml-10 pt-1">
+        <div class="text-[14px] sm:text-[20px] ml-10 pt-1">
           克服ポイント：<%=@recipe.get_point%>
         </div>
       </div>
     </div>
   </div>
   
-  <div class="flex">
-    <div class="ml-10">
-      <div class="text-[20px] mb-3 mt-3 w-[350px]">
+  <div class="md:flex mt-5">
+    <div class="md:ml-10">
+      <div class="text-[16px] sm:text-[20px] mb-3 mt-3 w-[350px]">
        【材料】
       </div>
       <% @recipe.ingredients.each do |ingredient| %>
-        <div class="flex justify-between w-[350px] border-b border-gray-400 mb-2">
+        <div class="flex justify-between text-[14px] sm:text-[20px] w-[350px] border-b border-gray-400 mb-2">
           <span><%= ingredient.name %></span>
           <span><%= ingredient.quantity %></span>
         </div>
       <% end %>
     </div>
-    <div class="ml-50">
-      <div class="text-[20px] mb-3 mt-3">
+    <div class="md:ml-50">
+      <div class="text-[16px] sm:text-[20px] mb-3 mt-3">
        【手順】
       </div>
       <div class="flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <% @recipe.instructions.each do |instruction| %>
-          <div class="flex flex-col mb-5 mr-10">
-            <span class="w-10 text-lg font-semibold pl-2"><%= instruction.step %></span>
+          <div class="flex flex-col text-[14px] sm:text-[20px] mb-5 mr-10">
+            <span class="w-10 font-semibold pl-2"><%= instruction.step %></span>
             <span class="mb-2 w-55 rounded-lg px-2"><%= instruction.content %></span>
           </div>
         <% end %>
       </div>
     </div>
   </div>
-  <div class="rounded-lg w-130 border ml-150 mt-3 p-2" style="background-color: #F2EDED;"> <!-- 丸みを帯びた四角 -->
-    <h2 class="text-[15px]">コツ・工夫点:</h2> <!-- タイトル -->
+  <div class="rounded-lg w-full md:w-130 border md:ml-150 mt-3 p-2" style="background-color: #F2EDED;"> <!-- 丸みを帯びた四角 -->
+    <h2 class="text-[12px] sm:text-[15px]">コツ・工夫点:</h2> <!-- タイトル -->
     <div class="text-[15px] py-2">
       <%= @recipe.trick %>
     </div>
   </div>
 </div>
-<div class="flex justify-center mt-20 pb-10">
+<div class="md:flex md:justify-center mt-10 md:mt-20 pb-10">
   <div>
     <%= render 'comments/form', comment: @comment, recipe: @recipe %>
     <div class="flex flex-col justify-center">
-      <div class="text-left text-[20px] font-bold mt-8">
+      <div class="text-left text-[14px] sm:text-[20px] font-bold mt-8">
         <p>みんなからのコメント</p>
       </div>
       <div id="table-comment">
