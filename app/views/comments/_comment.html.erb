@@ -1,13 +1,13 @@
 <%= turbo_frame_tag comment do %>
   <div id="comment-<%= comment.id %>">
-    <div class="border-b border-gray-400 p-2 mb-6">
+    <div class="border-b border-gray-400 p-2 mb-2 md:mb-6">
       <div>
         <div class="flex justify-between text-[10px] sm:text-[15px]">
           <h3>○<%= comment.user.name %></h3>
           <%= comment.created_at.strftime("%Y年%m月%d日") %>
         </div>
         <div class="flex justify-between items-end">
-          <div class=" p-2">
+          <div class="p-2">
             <p class="text-[12px] sm:text-[18px]"><%= simple_format(comment.content) %></p>
           </div>
           <div class="text-[12px] sm:text-[16px]">
