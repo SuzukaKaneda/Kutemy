@@ -1,8 +1,8 @@
 <div class="flex justify-between">
-  <div class="text-left text-[20px] font-bold py-2">
+  <div class="text-left text-[16px] sm:text-[20px] font-bold py-2">
     お気に入りレシピ一覧
   </div>
-  <div class="flex justify-end pt-4 mr-10">
+  <div class="flex justify-end pt-4 mr-10 text-[12px] sm:text-[20px]">
     <% if user_signed_in? %>
       <%= "こんにちは、#{current_user.name}さん" %>
     <% else %>
@@ -12,7 +12,7 @@
 </div>
 
 <div class="flex">
-  <div class="flex justify-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-230">
+  <div class="flex justify-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-8 w-230 mb-3">
     <% @favorite_recipes.each do |recipe| %>
       <%= render recipe %>
     <% end %>

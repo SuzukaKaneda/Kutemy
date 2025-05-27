@@ -1,7 +1,7 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 
-<div class="rounded-lg w-200 border text-[20px] mt-5 p-2" style="background-color: #F2EDED;">
+<div class="rounded-lg w-full md:w-200 border text-[14px] sm:text-[20px] mt-5 p-2" style="background-color: #F2EDED;">
   <div class="flex items-center">
     <% case notification.action %>
       <% when "favorite" then %>
@@ -11,13 +11,13 @@
           <div class="flex">
             <p class="text-green-600"><%= "#{visitor.name}" %></p><p>さんが</p><p class="underline"><%= link_to"あなたの投稿に", notification.recipe %></p><p class="text-green-600">コメント</p><p>しました。</p>
           </div>
-          <p class="truncate italic text-neutral-500 text-[18px]">
+          <p class="truncate italic text-neutral-500 text-[10px] sm:text-[18px]">
             <%= Comment.find_by(id: notification.comment_id)&.content %>
           </p>
         </div>
     <% end %>
   </div>
   <div>
-    <p class="text-[15px]"><%= time_ago_in_words(notification.created_at).upcase %></p>
+    <p class="text-[10px] sm:text-[15px]"><%= time_ago_in_words(notification.created_at).upcase %></p>
   </div>
 </div>
