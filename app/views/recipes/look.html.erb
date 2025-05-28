@@ -1,4 +1,4 @@
-<div class="flex justify-end pt-4 mr-10">
+<div class="flex justify-end pt-4 mr-10 text-[12px] sm:text-[20px]">
   <% if user_signed_in? %>
     <%= "こんにちは、#{current_user.name}さん" %>
   <% else %>
@@ -7,30 +7,32 @@
 </div>
 
 <div class="pt-5">
-  <h1 class="mb-10 ml-10 text-[20px] font-bold text-neutral-600">○キーワードから探す</h1>
+  <h1 class="sm:mb-10 text-[12px] sm:text-[20px] font-bold text-neutral-600">○キーワードから探す</h1>
   <%= search_form_for @q, url: recipes_path do |f| %>
-    <div class="flex ml-65 my-3">
-    <div data-controller="autocomplete" data-autocomplete-url-value="/recipes/search" role="combobox">
-      <%= f.search_field :title_cont, data: { autocomplete_target: 'input' }, placeholder: "レシピ名から検索", class: "rounded-lg w-130 h-10 p-2 border", style: "background-color: #F2EDED;" %>
-      <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
-      <div data-autocomplete-target="results" class="autocomplete-results"></div>
-    </div>
-    <div class="ml-5">
-        <%= f.submit class: "btn btn-primary cursor-pointer rounded-lg border mt-1 py-1 px-3", style: "background-color: #F2EDED;" %>
+    <div class="flex md:ml-55 my-3">
+      <div data-controller="autocomplete" data-autocomplete-url-value="/recipes/search" role="combobox">
+        <%= f.search_field :title_cont, data: { autocomplete_target: 'input' }, placeholder: "レシピ名から検索", class: "w-70 sm:w-130 text-[14px] sm:text-[18px] p-1 sm:p-2 border rounded-lg", style: "background-color: #F2EDED;" %>
+        <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
+        <div data-autocomplete-target="results" class="autocomplete-results"></div>
+      </div>
+      <div class="ml-5">
+        <%= f.submit class: "btn btn-primary text-[12px] sm:text-[18px] cursor-pointer rounded-lg border sm:mt-1 py-1 px-3", style: "background-color: #F2EDED;" %>
       </div>
     </div>
   <% end %>
 </div>
 
-<div class="ml-10 pt-10">
-  <h1 class="flex mb-10 text-[20px] font-bold text-neutral-600">○苦手な食材から探す</h1>
-  <div class="flex justify-center ml-15 mr-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
-    <% @tags.each do |tag| %>
-      <%= link_to(recipes_path(tag_id: tag.id)) do %>
-        <div class="rounded-lg border w-50 h-20 flex items-center justify-center" style="background-image: url('<%= asset_path(tag.image_path || 'no_image.png') %>'); background-size: cover; background-color: rgba(255, 255, 255, 0.7); background-blend-mode: overlay;">
-          <p class="text-[20px]"><%= "#{tag.name}" %></p>
-        </div>
+<div class="sm:pt-10">
+  <h1 class="sm:mb-10 text-[12px] sm:text-[20px] font-bold text-neutral-600">○苦手な食材から探す</h1>
+  <div class="flex my-3 sm:ml-20">
+    <div class="flex justify-center grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-10 mb-3">
+      <% @tags.each do |tag| %>
+        <%= link_to(recipes_path(tag_id: tag.id)) do %>
+          <div class="rounded-lg border w-40 h-20 sm:w-50 flex items-center justify-center" style="background-image: url('<%= asset_path(tag.image_path || 'no_image.png') %>'); background-size: cover; background-color: rgba(255, 255, 255, 0.7); background-blend-mode: overlay;">
+            <p class="text-[20px]"><%= "#{tag.name}" %></p>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

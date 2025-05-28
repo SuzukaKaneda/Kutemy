@@ -3,6 +3,7 @@
   <head>
     <title><%= content_for(:title) || "Myapp" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= show_meta_tags %>
     <%= csrf_meta_tags %>
@@ -25,11 +26,13 @@
       <%= render 'shared/before_login_header' %>
     <% end %>
     <div class="bg-amber-50 min-h-screen">
-      <div>
+      <div class="text-[10px] sm:text-[16px]">
         <p class="alert"><%= alert %></p>
         <p style="color: green"><%= notice %></p>
       </div>
+      <div class="ml-4 md:ml-10 mr-4 md:mr-10">
       <%= yield %>
+      </div>
     </div>
     <%= render 'shared/footer' %>
   </body>

@@ -1,20 +1,20 @@
-<h2 class="ml-10 text-[25px]">アカウント名変更</h2>
+<h2 class="text-left text-[16px] sm:text-[20px] font-bold py-2">アカウント名変更</h2>
   <%= form_with model: @user do |f| %>
-    <div class="field mt-5 text-[20px] ml-60">
+    <div class="field mt-5 text-[14px] sm:text-[20px] md:ml-50">
       <span>アカウント名：</span>
-      <div class= "ml-10 rounded-lg border w-140 h-12 mt-4 p-2"  style="background-color: #F2EDED;">
-        <div class="text-[18px] text-left ml-5">
+      <div class= "rounded-lg border md:w-140 md:h-12 mt-4 p-2"  style="background-color: #F2EDED;">
+        <div class="text-[12px] sm:text-[18px] text-left">
           <%= @user.name %>
         </div>
       </div>
     </div>
-    <div class="field mt-15 text-[20px]">
-      <%= f.label :"新しいアカウント名：", class: "ml-60" %><br />
-      <div class= "flex ml-70">
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "bg-gray-300 w-140 h-10 mt-3 p-2" %>
+    <div class="field mt-8 md:mt-15 text-[14px] sm:text-[20px]">
+      <%= f.label :"新しいアカウント名：", class: "md:ml-50" %><br />
+      <div class= "flex md:ml-50">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "bg-gray-300 w-full text-[12px] sm:text-[18px] md:w-140 md:h-10 mt-3 p-2" %>
       </div>
     </div>
-    <div class="ml-130 mt-20">
-    <%= f.submit "更新", class: "rounded-lg bg-green-300 text-stone-700 px-4 cursor-pointer" %>
+    <div class="md:ml-115 mt-10 md:mt-20 md:block flex justify-center">
+      <%= f.submit "更新", class: "text-[12px] sm:text-[18px] rounded-lg bg-green-300 text-stone-700 px-4 cursor-pointer" %>
     </div>
   <% end %>

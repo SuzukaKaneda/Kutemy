@@ -11,7 +11,7 @@ class RecipeImageUploader < CarrierWave::Uploader::Base
   end
 
   version :index_size do
-    process resize_and_pad: [ 250, 300, "#F2EDED", "Center" ]
+    process resize_and_pad: [ 200, 230, "#F2EDED", "Center" ]
   end
 
   version :show_size do

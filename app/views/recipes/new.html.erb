@@ -1,13 +1,5 @@
 <% content_for :title, "New recipe" %>
-<div class="">
-<div class="text-left ml-10 text-[20px] font-bold py-2">
-<h1>新しいレシピ</h1>
+<div class="text-left text-[16px] sm:text-[20px] font-bold py-2">
+  <h1>新しいレシピ</h1>
 </div>
 <%= render "form", recipe: @recipe %>
-
-<br>
-
-<div>
-  <%= link_to "レシピ一覧へ", recipes_path %>
-</div>
-</div>

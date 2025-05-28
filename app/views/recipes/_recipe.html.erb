@@ -1,6 +1,6 @@
 <div id="<%= dom_id recipe %>">
-  <div class="flex flex-wrap justify-center">
-    <div class="m-6">
+  <div class="flex sm:w-60 flex-wrap justify-center rounded-lg border border-amber-50 shadow-lg my-2 bg-white">
+    <div class="m-4 sm:m-6">
       <%= link_to(recipe)  do %>
         <dev class="flex justify-center">
           <%= cl_image_tag(recipe.image.url(:index_size)) %>
@@ -9,10 +9,10 @@
           <%= "#{recipe.title}" %>
         </div>
         <div class="flex justify-between w-50">
-          <div class="flex ml-3">
+          <div class="flex">
             <%= render 'favorite_buttons', recipe:recipe %>
           </div>
-          <div class="text-[15px] mt-1 mr-3">
+          <div class="text-[16px] mt-1 mr-3">
             <p><%= "克服ポイント：""#{recipe.get_point}" %></p>
           </div>
         </div>

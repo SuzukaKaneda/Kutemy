@@ -99,13 +99,10 @@ RSpec.describe "Users", type: :system do
         @reward = user.rewards.create(required_points: "2", content: "お菓子を買う", completed: false)
       end
       it 'モーダル出現' do
-        click_on '克服ポイント'
+        find('.card').click
         find('input.add_points', visible: true).set(3)
         click_on '加算'
         expect(page).to have_content('目標ポイントを達成しました。')
-      end
-      after do
-        @reward.destroy
       end
     end
   end

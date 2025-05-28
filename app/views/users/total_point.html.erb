@@ -1,61 +1,57 @@
 <%=javascript_include_tag "add_point" %>
-<div class="text-left ml-10 text-[20px] font-bold py-2">
+<div class="text-left text-[16px] sm:text-[20px] font-bold py-2">
   克服ポイントカード
 </div>
 <div class="flex justify-center mb-3">
-  <div class="rounded-lg border w-150 h-60 p-8 mt-10" style="background-color: #F2EDED;">
-    <div class=" text-[20px]">
+  <div class="rounded-lg border  md:h-60 p-4 md:p-8 mt-10" style="background-color: #F2EDED;">
+    <div class="text-[14px] sm:text-[20px]">
       <%= "#{@user.name} さん" %>
     </div>
-    <div class="flex ml-20">
-      <p class="text-[32px]">現在</p>
-      <p class="text-[56px] font-bold  ml-15 mt-5"><%= @user.point %></p>
-      <p class="text-[32px] ml-15 mt-15">ポイント</p>
+    <div class="md:flex ml-10 md:ml-20">
+      <p class="text-[20px] sm:text-[32px]">現在</p>
+      <p class="text-[40px] sm:text-[56px] font-bold  ml-15 md:mt-5"><%= @user.point %></p>
+      <p class="text-[20px] sm:text-[32px] ml-30 md:ml-15 md:mt-15">ポイント</p>
     </div>
   </div>
 </div>
 
 <%= form_with(url: user_add_point_path(@user), local: true, html: { id: "add-point-form" }) do |form| %>
-  <div class="flex justify-center items-center ml-50">
+  <div class="flex justify-center items-center ml-5 md:ml-40 text-[14px] sm:text-[16px]">
     <%= label_tag :add, "加算するポイント数：" %>
-    <%= number_field_tag :add, nil, min: 1, max: 3, placeholder: "0", class: "bg-gray-300 w-10 pl-1" %>
+    <%= number_field_tag :add, nil, min: 1, max: 3, placeholder: "0", class: "bg-gray-300 w-11 pl-1 h-7" %>
     <p class="ml-2">ポイント</p>
-    <%= submit_tag "加算", class: "add_points rounded-lg border w-15 h-7  ml-5", style: "background-color: #F2EDED;" %>
+    <%= submit_tag "加算", class: "add_points rounded-lg border px-3.5 py-0.5 ml-3 md:ml-5 text-[12px] sm:text-[16px]", style: "background-color: #F2EDED;" %>
   </div>
 <% end %>
 <%= form_with(url: user_subtract_point_path(@user), local: false, html: { id: "#subtract-point-form" }) do |form| %>
-  <div class="flex justify-center items-center mt-1 ml-50">
+  <div class="flex justify-center items-center mt-1 ml-5 md:ml-40 text-[14px] sm:text-[16px]">
     <%= label_tag :subtract, "減算するポイント数：" %>
-    <%= number_field_tag :subtract, nil, min: 1, max: 3, placeholder: "0", class: "bg-gray-300 w-10 pl-1" %>
+    <%= number_field_tag :subtract, nil, min: 1, max: 3, placeholder: "0", class: "bg-gray-300 w-11 pl-1 h-7" %>
     <p class="ml-2">ポイント</p>
-    <%= submit_tag "減算", class: "rounded-lg border w-15 h-7  ml-5", style: "background-color: #F2EDED;" %>
+    <%= submit_tag "減算", class: "rounded-lg border px-3.5 py-0.5 ml-3 md:ml-5 text-[12px] sm:text-[16px]", style: "background-color: #F2EDED;" %>
   </div>
 <% end %>
 
-<div class="flex justify-center mt-15">
-  <div class="rounded-lg border border-neutral-400 bg-neutral-100/70 p-2">
+<div class="flex justify-center mt-8 md:mt-15">
+  <div class="rounded-lg border w-full md:w-150 border-neutral-400 bg-neutral-100/70 p-2">
     <div class="flex items-end">
-      <span class="text-[20px]">目標： </span>
-      <span class="text-[24px]"><%= "#{@reward.required_points}" %></span>
-      <span class="text-[20px] ml-2"> ポイント</span>
+      <span class="text-[14px] sm:text-[20px]">目標： </span>
+      <span class="text-[18px] sm:text-[24px]"><%= "#{@reward.required_points}" %></span>
+      <span class="text-[14px] sm:text-[20px] ml-2"> ポイント</span>
     </div>
-    <div class="mt-5 pb-2">
-      <p class="text-[20px]">ごほうび：</p>
-      <div class="w-150">
-        <span class="text-[24px]"><%= "#{@reward.content}" %></span>
+    <div class="mt-3 md:mt-5 pb-2">
+      <p class="text-[14px] sm:text-[20px]">ごほうび：</p>
+      <div class="w-full md:w-150">
+        <span class="text-[18px] sm:text-[24px]"><%= "#{@reward.content}" %></span>
       </div>
-      </div>
+    </div>
   </div>
 </div>
 
 <div class="flex justify-center">
-  <div class="flex justify-between w-150  mt-10 pb-20">
-    <div class="text-[18px]">
-      <%= link_to "今までのこほうび", user_rewards_path(current_user.id) %>
-    </div>
-    <div class="text-[18px]">
-      <%= link_to "克服ポイントとは？", others_point_explanation_path %>
-    </div>
+  <div class="flex justify-between w-150  mt-10 pb-20 text-[14px] sm:text-[20px]">
+    <%= link_to "今までのこほうび", user_rewards_path(current_user.id) %>
+    <%= link_to "克服ポイントとは？", others_point_explanation_path %>
   </div>
 </div>
 
