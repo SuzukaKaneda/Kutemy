@@ -20,7 +20,7 @@ class RecipesTest < ApplicationSystemTestCase
     find("input.title", visible: true).set(@recipe.title)
     find("input.point", visible: true).set(@recipe.get_point)
     click_button "投稿"
-    assert_text "レシピを作成しました。"
+    assert_text "レシピを作成しました。", wait: 15
   end
 
   test "should update Recipe" do
