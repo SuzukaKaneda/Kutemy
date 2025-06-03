@@ -5,7 +5,7 @@
       <div class=" flex justify-center">
         <div class="relative inline-block">
           <p class="text-[14px] sm:text-[24px] text-center">お子様の好き嫌いにお困りではないですか？</p>
-          <p class="absolute left-0 bottom-0 h-1 w-full bg-red-300 transform scale-x-0 transition-transform duration-500 ease-in-out" id="underline"></p>
+          <p class="underline absolute left-0 bottom-0 h-1 w-full bg-red-300 transform scale-x-0 transition-transform duration-500 ease-in-out"></p>
         </div>
       </div>
       <p class="text-[10px] sm:text-[15px] mt-3 md:mt-8">
@@ -26,8 +26,8 @@
 </div>
 
 <script>
-  window.addEventListener('load', () => {
-    const underline = document.getElementById('underline');
+  document.addEventListener('turbo:load', () => {
+    const underline = document.querySelector('.underline');
     underline.classList.remove('scale-x-0');
     underline.classList.add('scale-x-100');
   });
