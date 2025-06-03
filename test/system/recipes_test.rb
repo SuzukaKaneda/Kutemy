@@ -10,7 +10,7 @@ class RecipesTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit recipes_url
-    assert_text "レシピ一覧"
+    assert_text "ヒットしたレシピ"
   end
 
   test "should create recipe" do

@@ -2,7 +2,7 @@
 
 <div class="flex justify-between">
   <div class="text-left text-[16px] sm:text-[20px] font-bold py-2">
-    検索結果
+    ヒットしたレシピ
   </div>
   <div class="flex justify-end pt-4 mr-10 text-[12px] sm:text-[20px]">
     <% if user_signed_in? %>
@@ -29,7 +29,7 @@
 <div class="flex">
 <div class="mt-2 sm:mt-5 text-[12px] sm:text-[18px]">
   <% if @recipes.present? %>
-    <%= "ヒットしたレシピ数：#{@recipes.count}件" %>
+    <%= "レシピ数：#{@recipes.count}件" %>
   <% else %>
     <%= "レシピが存在しません。" %>
   <% end %>
