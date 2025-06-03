@@ -19,7 +19,7 @@
     
   </head>
 
-  <body>
+  <body class="font-[Imprima] text-neutral-800">
     <% if user_signed_in? %>
       <%= render 'shared/header' %>
     <% else %>
@@ -30,8 +30,8 @@
         <p class="alert"><%= alert %></p>
         <p style="color: green"><%= notice %></p>
       </div>
-      <div class="ml-4 md:ml-10 mr-4 md:mr-10">
-      <%= yield %>
+      <div class="ml-4 md:ml-10 mr-4 md:mr-10 text-neutral-600">
+        <%= yield %>
       </div>
     </div>
     <%= render 'shared/footer' %>
