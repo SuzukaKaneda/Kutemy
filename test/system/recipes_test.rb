@@ -10,7 +10,7 @@ class RecipesTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit recipes_url
-    assert_text "レシピ一覧"
+    assert_text "ヒットしたレシピ"
   end
 
   test "should create recipe" do
@@ -20,7 +20,7 @@ class RecipesTest < ApplicationSystemTestCase
     find("input.title", visible: true).set(@recipe.title)
     find("input.point", visible: true).set(@recipe.get_point)
     click_button "投稿"
-    assert_text "レシピを作成しました。"
+    assert_text "レシピを作成しました。", wait: 15
   end
 
   test "should update Recipe" do

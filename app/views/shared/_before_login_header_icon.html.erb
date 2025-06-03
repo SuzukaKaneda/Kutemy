@@ -1,6 +1,6 @@
 <div class="flex justify-between">
   <div class="text-left ml-2 md:ml-10 pt-1 sm:pt-4">
-    <p class="font-bold text-3xl sm:text-5xl">Kutemy</p>
+    <%= link_to "Kutemy", root_path, class: "font-bold text-3xl sm:text-5xl", data: { turbo: false } %>
   </div>
   <div class="flex justify-end font-bold items-center space-x-8 h-[50px] sm:h-[80px] mr-10">
     <%= link_to(recipes_look_path)  do %>

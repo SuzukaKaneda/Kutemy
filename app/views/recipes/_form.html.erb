@@ -34,24 +34,25 @@
       <img id="image_preview" src="<%= @recipe.image.url %>" alt="Image Preview" class="w-full sm:w-[400px]" style="display: block;" />
     </div>
     <div class="py-2 md:ml-30">
-      <%= f.label :" ", style: "display: block;" %>
+      <%= f.label :"【レシピ名】", style: "display: block;", class:"text-[16px] sm:text-[20px]" %>
       <%= f.text_field :title, required: true, style: "text-align: center;", placeholder: " 例）カレーライス", class: "title text-[25px] w-full sm:text-[30px] sm:w-135 sm:h-15 mb-4 bg-gray-300" %></br>
-      <%= f.label :tag_id, " ", class: "hidden" %>
+      <%= f.label :tag_id, "【ターゲットの食材】", class: "block  sm:mt-10 text-[16px] sm:text-[20px]" %>
       <% if @recipe.tags.present? %>
-        <%= f.collection_select :tag_id, Tag.all, :id, :name, { selected: @recipe.tags.pluck(:id) }, class: "tag text-[20px] w-full sm:text-[30px] sm:w-135 sm:h-15 mb-3 sm:mb-8 bg-gray-300 sm:mt-10 text-gray-500", style: "text-align: center;" %>
+        <%= f.collection_select :tag_id, Tag.all, :id, :name, { selected: @recipe.tags.pluck(:id) }, class: "tag text-[20px] w-full sm:text-[30px] sm:w-135 sm:h-15 mb-3 sm:mb-8 bg-gray-300 text-gray-500", style: "text-align: center;" %>
       <% else %>
-        <%= f.collection_select :tag_id, Tag.all, :id, :name, { include_blank: "苦手な食材を選択" }, class: "tag text-[20px] w-full sm:text-[30px] sm:w-135 sm:h-15 mb-3 sm:mb-8 bg-gray-300 sm:mt-10 text-gray-500", style: "text-align: center;" %>
+        <%= f.collection_select :tag_id, Tag.all, :id, :name, { include_blank: "食材を選択" }, class: "tag text-[20px] w-full sm:text-[30px] sm:w-135 sm:h-15 mb-3 sm:mb-8 bg-gray-300 text-gray-500", style: "text-align: center;" %>
       <% end %>
-      <div class="flex items-center text-[14px] sm:text-[20px] py-2">
+      <div class="flex items-center text-[12px] sm:text-[16px] py-2">
         <%= f.label :"克服ポイント：", style: "margin-right: 10px;"%>
-        <%= f.number_field :get_point, in: 1..3, step: 1, required: true, style: "text-align: center;" , class: "w-13 sm:w-15 h-7 sm:h-10 point bg-gray-300" %>
+        <%= f.number_field :get_point, in: 1..3, step: 1, required: true, style: "text-align: center;" , class: "w-6 sm:w-12 h-6 sm:h-6 point bg-gray-300" %>
       </div>
+      <p class="mt-1 md:mt-4 text-red-700 text-[14px] sm:text-[16px]">※ポイントはターゲットの食材の食べやすさに応じ、1~3の数値を入力してください</p>
     </div>
   </div>
   <div class="md:flex">
     <div class="mt-5 w-90">
       <div id="ingredients">
-        <div class="text-[16px] md:text-[20px] mb-3 md:mb-5">
+        <div class="text-[16px] sm:text-[20px] mb-3 md:mb-5">
          【材料】
         </div>
         <%= f.fields_for :ingredients do |ingredient_fields| %>
@@ -66,7 +67,7 @@
       <button id="add-ingredient" type="button">＋材料を追加</button>
     </div>
     <div class="mt-5 md:ml-50">
-      <div class="text-[16px] md:text-[20px] mb-3 md:mb-5">
+      <div class="text-[16px] sm:text-[20px] mb-3 md:mb-5">
       【手順】
       </div>
       <div id="instructions" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7">

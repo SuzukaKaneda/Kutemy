@@ -2,7 +2,7 @@
 
 <div class="flex justify-between">
   <div class="text-left text-[16px] sm:text-[20px] font-bold py-2">
-    レシピ一覧
+    ヒットしたレシピ
   </div>
   <div class="flex justify-end pt-4 mr-10 text-[12px] sm:text-[20px]">
     <% if user_signed_in? %>
@@ -26,17 +26,23 @@
   </div>
 <% end %>
 
+<div class="flex">
 <div class="mt-2 sm:mt-5 text-[12px] sm:text-[18px]">
-<% if @recipes.present? %>
-  <%= "検索結果：#{@recipes.count}件" %>
-<% else %>
-  <%= "レシピが存在しません。" %>
-<% end %>
+  <% if @recipes.present? %>
+    <%= "レシピ数：#{@recipes.count}件" %>
+  <% else %>
+    <%= "レシピが存在しません。" %>
+  <% end %>
+</div>
+<div class="mt-2 sm:mt-5 text-[13px] sm:text-[20px] ml-10 md:ml-30">
+  <%= link_to "→全てのレシピを見てみる", recipes_path %>
+</div>
 </div>
 
 <div class="ml-3 mt-1 sm:mt-3 sm:mt-8 underline text-[12px] sm:text-[18px]">
-<%= link_to "克服ポイントとは？", others_point_explanation_path %>
+  <%= link_to "克服ポイントとは？", others_point_explanation_path %>
 </div>
+
 
 <div class="flex">
   <div class="flex justify-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-8 w-230 mb-3">
