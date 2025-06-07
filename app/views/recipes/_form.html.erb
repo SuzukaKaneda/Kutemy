@@ -59,7 +59,7 @@
           <div class="ingredient flex items-center mb-3">
             <%= ingredient_fields.hidden_field :_destroy %>
             <%= ingredient_fields.text_field :name, placeholder: " 例）にんじん", class: "bg-gray-300 p-1 w-60" %>
-            <%= ingredient_fields.text_field :quantity, placeholder: "例）1本", class: "bg-gray-300 ml-5 w-18" %>
+            <%= ingredient_fields.text_field :quantity, placeholder: "例）1本", class: "bg-gray-300 ml-5 p-1 w-18" %>
             <input type="button" value="削除" class="ml-2" onclick="deleteRow(this)">
           </div>
         <% end %>
@@ -70,7 +70,7 @@
       <div class="text-[16px] sm:text-[20px] mb-3 md:mb-5">
       【手順】
       </div>
-      <div id="instructions" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7">
+      <div id="instructions" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-7">
         <%= f.fields_for :instructions do |instruction_fields| %>
           <div class="instructions flex flex-col">
             <%= instruction_fields.hidden_field :_destroy %>
@@ -118,8 +118,8 @@
   
     newIngredientDiv.innerHTML = `
       <input type="hidden" name="ingredient[_destroy]" value="0"> 
-      <input type="text" name="recipe[ingredients_attributes][${newIndex}][name]" placeholder=" 例）にんじん" class="bg-gray-300 w-60">
-      <input type="text" name="recipe[ingredients_attributes][${newIndex}][quantity]" placeholder="例）1本" class="bg-gray-300 ml-5 w-18">
+      <input type="text" name="recipe[ingredients_attributes][${newIndex}][name]" placeholder=" 例）にんじん" class="bg-gray-300 p-1 w-60">
+      <input type="text" name="recipe[ingredients_attributes][${newIndex}][quantity]" placeholder="例）1本" class="bg-gray-300 ml-5 p-1 w-18">
       <input type="button" value="削除" class="ml-2" onclick="deleteRow(this)">
     `;
 
