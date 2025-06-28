@@ -3,6 +3,7 @@ ja:
     distance_in_words:
       less_than_x_minutes: "1分未満"
       x_minutes: "約%{count}分前"
+      about_x_months: "約 %{count} ヶ月前"
       about_x_hours: "約%{count}時間前"
       x_days: "%{count}日前"
       x_weeks: "%{count}週間前"
@@ -150,3 +151,10 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "&hellip;"
