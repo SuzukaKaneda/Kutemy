@@ -90,7 +90,7 @@ class RecipesController < ApplicationController
   end
 
   def favorites
-    @favorite_recipes = current_user.favorite_recipes.includes(:user).order(created_at: :desc)
+    @favorite_recipes = current_user.favorite_recipes.includes(:user).order(created_at: :desc).page(params[:page]).per(9)
   end
 
   private
