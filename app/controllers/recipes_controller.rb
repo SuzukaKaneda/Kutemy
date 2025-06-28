@@ -6,9 +6,9 @@ class RecipesController < ApplicationController
   def index
     @q = Recipe.ransack(params[:q])
       if params[:tag_id].present?
-        @recipes = Recipe.with_tag(params[:tag_id])
+        @recipes = Recipe.with_tag(params[:tag_id]).page(params[:page]).per(9)
       else
-        @recipes = @q.result
+        @recipes = @q.result.page(params[:page]).per(9)
       end
     @tags = Tag.all
   end
