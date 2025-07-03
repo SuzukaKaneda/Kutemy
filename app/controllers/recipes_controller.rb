@@ -90,7 +90,12 @@ class RecipesController < ApplicationController
   end
 
   def favorites
-    @favorite_recipes = current_user.favorite_recipes.includes(:user).order(created_at: :desc).page(params[:page]).per(9)
+    if  params[:tag_id].present?
+      @favorite_recipes = current_user.favorite_recipes.includes(:user).with_tag(params[:tag_id]).order(created_at: :desc).page(params[:page]).per(9)
+    else
+      @favorite_recipes = current_user.favorite_recipes.includes(:user).order(created_at: :desc).page(params[:page]).per(9)
+    end
+    @tags = Tag.all
   end
 
   private
