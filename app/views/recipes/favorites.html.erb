@@ -11,6 +11,17 @@
   </div>
 </div>
 
+<div class="mb-2 sm:mb-5">
+  <p class="text-[12px] sm:text-[18px]">食材で絞り込む</p>
+  <p class="text-[10px] sm:text-[16px]">【
+    <%= link_to "全て", favorites_recipes_path, class:"hover:underline" %>
+    <% @tags.each do |tag| %>
+      <span>/</span>
+      <%= link_to "#{tag.name}", favorites_recipes_path(tag_id: tag.id), class:"hover:underline" %>
+    <% end %>
+    】</p>
+</div>
+
 <div class="flex">
   <div class="flex justify-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-8 w-230 mb-3">
     <% @favorite_recipes.each do |recipe| %>
