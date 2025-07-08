@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :notifications, only: :index
 
   get "recipes/look" => "recipes#look"
+  get "recipes/ranking" => "recipes#ranking"
+
   resources :recipes, only: %i[index new create show edit update destroy] do
     collection do
       get :favorites

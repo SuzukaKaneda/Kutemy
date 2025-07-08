@@ -23,6 +23,10 @@ class RecipesController < ApplicationController
     render partial: "recipes/search", locals: { recipes: @recipes }
   end
 
+  def ranking
+    @recipe_ranks = Recipe.find(Favorite.group(:recipe_id).order('count(recipe_id) desc').pluck(:recipe_id))
+  end
+
   # GET /recipes/1 or /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
