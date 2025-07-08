@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
   end
 
   def ranking
-    @recipe_ranks = Recipe.find(Favorite.group(:recipe_id).order('count(recipe_id) desc').limit(6).pluck(:recipe_id))
+    @recipe_ranks = Recipe.find(Favorite.group(:recipe_id).order("count(recipe_id) desc").limit(6).pluck(:recipe_id))
   end
 
   # GET /recipes/1 or /recipes/1.json
