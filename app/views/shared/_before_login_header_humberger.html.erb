@@ -13,6 +13,7 @@
 <div id="humbergerMenu" class="text-[14px] sm:text-[18px] humberger_menu hidden mx-10 mt-1 py-2 md:py-4">
   <ul>
     <%= link_to "レシピを探す", recipes_look_path, class: "border-b block px-4 hover:bg-green-400" %>
-    <%= link_to "投稿する",new_recipe_path, class: "block px-4 hover:bg-green-400", onclick: "alert('ログインしてください。'); window.location='#{new_user_session_path}'" %>
+    <%= link_to "投稿する",new_recipe_path, class: "border-b block px-4 hover:bg-green-400", onclick: "alert('ログインしてください。'); window.location='#{new_user_session_path}'" %>
+    <%= link_to "ランキング",recipes_ranking_path, class: "block px-4 hover:bg-green-400", onclick: "alert('ログインしてください。'); window.location='#{new_user_session_path}'" %>
   </ul>
 </div>
